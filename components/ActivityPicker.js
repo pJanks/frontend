@@ -4,11 +4,11 @@ import { View, Picker, StyleSheet } from "react-native";
 export default function ActivityPicker() {
   const [selectedValue, setSelectedValue] = useState("Select an activity...");
   return (
-    <View style={styles.container}>
+    <View>
       <Picker
         selectedValue={selectedValue}
-        style={{ height: 40, width: 220, borderColor: 'gray', borderWidth: 1, backgroundColor: '#fff' }}
-        onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+        style={ styles.picker }
+        onValueChange={(itemValue) => setSelectedValue(itemValue)}
       >
         <Picker.item label='Select an activity...' value={0} />
         <Picker.item label='Hiking' value={1} />
@@ -24,7 +24,11 @@ export default function ActivityPicker() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    
+  picker: {
+    height: 40,
+    width: 250,
+    borderColor: 'gray',
+    borderWidth: 1,
+    backgroundColor: '#fff',
   }
 });

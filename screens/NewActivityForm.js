@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, Picker, Button, Alert } from 'react-native';
+import { Text, TextInput, View, Button, Alert, StyleSheet } from 'react-native';
 import DatePicker from '../components/DatePicker';
 
 import ActivityPicker from '../components/ActivityPicker';
@@ -11,24 +11,47 @@ export default class NewActivityForm extends Component {
 
   render() {
     
-
     return (
-      <View>
-        <Text>Activity:</Text>
+      <View style={ styles.container }>
+        <Text style={ styles.label }>Activity:</Text>
         <ActivityPicker />
-        <Text>Location:</Text>
+        <Text style={ styles.label }>Location:</Text>
         <TextInput       
-          style={{ height: 40, backgroundColor: '#fff' }}
+          style={ styles.location }
           // onChangeText={text => onChangeText(text)}
           // value={value} 
         />
-        <Text>Date:</Text>
+        <Text style={ styles.label }>Date:</Text>
         <DatePicker />
-        <Button
-          title="Create Activity"
-          onPress={() => Alert.alert('Activity button pressed')}
-        />
+        <View style={ styles.createActivity }>
+          <Button
+            title="Create Activity"
+            onPress={() => Alert.alert('Activity button pressed')}
+          />
+        </View>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'left',
+  },
+  location: {
+    backgroundColor: '#fff',
+    height: 40,
+    width: 250,
+  },
+  createActivity: {
+    margin: 20,
+    width: 250,
+  }
+})
