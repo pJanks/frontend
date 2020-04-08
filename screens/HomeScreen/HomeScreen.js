@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
-import UserWelcome from '../components/UserWelcome';
-import WeatherWindow from '../components/WeatherWindow';
-import UserLandingPage from '../components/UserLandingPage';
+
+import { View, Button, StyleSheet } from 'react-native';
+import UserWelcome from '../../components/UserWelcome/UserWelcome';
+import WeatherWindow from '../../components/WeatherWindow/WeatherWindow';
+import UserLandingPage from '../../components/UserLandingPage/UserLandingPage';
 
 export default function HomeScreen({ navigation }) {
   return (
