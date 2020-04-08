@@ -1,4 +1,4 @@
-{
+const mockData = [{
     "id": 1,
     "date": "2020-04-06T03:23:24Z",
     "location": "Denver, CO",
@@ -291,4 +291,6 @@
     },
     "created_at": "2020-04-03T03:23:26.122544Z",
     "updated_at": "2020-04-03T03:23:26.122555Z"
-},
+}]
+
+export default mockData;
