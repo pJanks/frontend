@@ -1,6 +1,6 @@
 import React from "react";
-import mockData from "../mockData/mockData";
-import ActivityCard from "./ActivityCard";
+import mockData from "../../mockData/mockData";
+import ActivityCard from "../ActivityCard/ActivityCard";
 import { View, StyleSheet, Text } from "react-native";
 
 export default function UserLandingPage() {

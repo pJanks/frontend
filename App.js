@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import NewActivityForm from './screens/NewActivityForm';
-import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
+import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
 
 const Stack = createStackNavigator();
 
