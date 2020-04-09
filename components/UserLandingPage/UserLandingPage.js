@@ -7,29 +7,38 @@ export default function UserLandingPage() {
   console.log(mockData);
   let userActivities = mockData.map(activity => {
     return (
-      <View>
-        <ScrollView>
           <ActivityCard
             date={ activity.date }
             location={ activity.location }
             activity={ activity.activity.name }
             forecast={ activity.forecast } />
-        </ScrollView>
-      </View>
   )})
   return (
-    <View>
-      { userActivities }
-    </View>
+    <ScrollView style={ styles.ScrollViewStyle }>
+      <View style={ styles.userActivities }>
+        { userActivities }
+      </View>
+    </ScrollView>
   )
 }
 
-// const styles = StyleSheet.create({
-//   picker: {
-//     height: 40,
-//     width: 250,
-//     borderColor: 'gray',
-//     borderWidth: 1,
-//     backgroundColor: '#fff',
-//   }
-// });
+const styles = StyleSheet.create({
+  userActivities: {
+    //need logic to dynamically style height based on how many cards exist in the
+    //users array, of figure out a different way to implement scroll so that we
+    //aren't using a fixed
+    borderColor: 'blue',
+    borderWidth: 1,
+    backgroundColor: 'blue',
+    paddingBottom: 320
+
+  }, ScrollViewStyle: {
+    //need logic to dynamically style height based on how many cards exist in the
+    //users array, of figure out a different way to implement scroll so that we
+    //aren't using a fixed
+    height: '100%',
+    borderColor: 'blue',
+    borderWidth: 1,
+    backgroundColor: 'blue',
+  }
+});
