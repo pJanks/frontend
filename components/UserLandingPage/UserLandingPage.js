@@ -6,7 +6,7 @@ import { View, StyleSheet, Text } from "react-native";
 export default function UserLandingPage() {
   console.log(mockData);
   let userActivities = mockData.map(activity => {
-    return <ActivityCard date={ activity.date } />
+    return <ActivityCard date={ activity.date } location={ activity.location } activity={ activity.activity.name } forecast={ activity.forecast } />
   })
   return (
     <View>
