@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { View, Button, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet, Text } from 'react-native';
 import UserWelcome from '../../components/UserWelcome/UserWelcome';
 import WeatherWindow from '../../components/WeatherWindow/WeatherWindow';
 import UserLandingPage from '../../components/UserLandingPage/UserLandingPage';
