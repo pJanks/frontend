@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
+import UserActivityScreen from './screens/UserActivityScreen/UserActivityScreen';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login'>
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='New Activity' component={NewActivityForm} />
+        <Stack.Screen name='UserActivityScreen' component={UserActivityScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
