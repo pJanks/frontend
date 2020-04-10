@@ -27,9 +27,7 @@ const styles = StyleSheet.create({
     //need logic to dynamically style height based on how many cards exist in the
     //users array, of figure out a different way to implement scroll so that we
     //aren't using a fixed
-    borderColor: 'blue',
     borderWidth: 1,
-    backgroundColor: 'blue',
     paddingBottom: 320
 
   }, ScrollViewStyle: {
@@ -37,8 +35,6 @@ const styles = StyleSheet.create({
     //users array, of figure out a different way to implement scroll so that we
     //aren't using a fixed
     height: '100%',
-    borderColor: 'blue',
-    borderWidth: 1,
-    backgroundColor: 'blue',
+    borderWidth: 2,
   }
 });
