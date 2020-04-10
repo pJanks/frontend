@@ -11,9 +11,9 @@ export default function ActivityCard({ date, location, activity, forecast }) {
         <Text style={ styles.label } >{ activity } at/in: </Text>
         <Text>{ `${location}\n`}</Text>
         <Text style={ styles.label } >Forecast: </Text>
-        <Text>{ `${forecast}`}</Text>
+        <Text style={ styles.bottomOfCard } >{ `${forecast}\n\n`}</Text>
       </Text>
-      <Button style={ styles.buttonStyles } title='View Activity'></Button>
+      <Button title='View Activity'></Button>
     </View>
   );
 }
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
   activityCard: {
     borderWidth: 2,
     borderColor: "#000",
-    borderRadius: 4,
-    height: 195,
-    margin: 25,
-    padding: 15,
+    borderRadius: 25,
+    height: 260,
+    margin: 30,
+    padding: 20,
     width: '86%',
 
   },
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
-  buttonStyles: {
+  bottomOfCard: {
+    marginBottom: 5000
   },
 
   header: {
