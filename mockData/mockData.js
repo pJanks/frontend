@@ -1,6 +1,6 @@
 const mockData = [{
     "id": 1,
-    "date": "2020-04-06T03:23:24Z",
+    "date": "2020-04-06",
     "location": "Denver, CO",
     "forecast": "Overcast",
     "forecast_img": "cloudy",
@@ -49,7 +49,7 @@ const mockData = [{
     "updated_at": "2020-04-06T03:23:26.122555Z"
 }, {
     "id": 2,
-    "date": "2020-04-01T03:23:24Z",
+    "date": "2020-04-01",
     "location": "Las Vegas, Nv",
     "forecast": "Sunny",
     "forecast_img": "sunshine",
@@ -110,9 +110,9 @@ const mockData = [{
     "updated_at": "2020-04-02T03:23:26.122555Z"
 }, {
     "id": 3,
-    "date": "2020-04-02T03:23:24Z",
+    "date": "2020-04-02",
     "location": "Boulder, CO",
-    "forecast": "Rainyt",
+    "forecast": "Rainy",
     "forecast_img": "rainclouds",
     "activity": {
         "id": 4,
@@ -159,7 +159,7 @@ const mockData = [{
     "updated_at": "2020-04-08T03:23:26.122555Z"
 },  {
     "id": 4,
-    "date": "2020-04-07T03:23:24Z",
+    "date": "2020-04-07",
     "location": "Denver, CO",
     "forecast": "Windy",
     "forecast_img": "a picture of wind",
@@ -208,7 +208,7 @@ const mockData = [{
     "updated_at": "2020-04-06T03:23:26.122555Z"
 }, {
     "id": 5,
-    "date": "2020-04-07T03:23:24Z",
+    "date": "2020-04-07",
     "location": "Denver, CO",
     "forecast": "Sunny",
     "forecast_img": "sunshine",
