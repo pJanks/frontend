@@ -1,11 +1,11 @@
-import * as React from 'react';
-
+import React from 'react';
 import { View, Button, StyleSheet, Text } from 'react-native';
 import UserWelcome from '../../components/UserWelcome/UserWelcome';
 import WeatherWindow from '../../components/WeatherWindow/WeatherWindow';
 import UserLandingPage from '../../components/UserLandingPage/UserLandingPage';
 
 export default function HomeScreen({ navigation }) {
+
   return (
     <View>
       <UserWelcome />
@@ -16,7 +16,7 @@ export default function HomeScreen({ navigation }) {
           title='Create New Activity'
           onPress={() => navigation.navigate('New Activity')} />
       </View>
-      <Text>userActivities</Text>
+      <Text>Scheduled Activities:</Text>
       <UserLandingPage />
     </View>
   )
