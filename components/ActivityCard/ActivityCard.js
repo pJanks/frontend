@@ -11,9 +11,12 @@ export default function ActivityCard({ date, location, activity, forecast }) {
         <Text style={ styles.label } >{ activity } at/in: </Text>
         <Text>{ `${location}\n`}</Text>
         <Text style={ styles.label } >Forecast: </Text>
-        <Text style={ styles.bottomOfCard } >{ `${forecast}\n\n`}</Text>
+        <Text>{ `${forecast}\n\n` }</Text>
       </Text>
-      <Button title='View Activity'></Button>
+      <Button
+        title='View Activity'
+        color ='#000'>
+      </Button>
     </View>
   );
 }
