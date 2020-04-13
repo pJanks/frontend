@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ActivityContext } from './context/ActivityContext';
+import { ActivityContext } from './context/UserContext';
 import { mockData } from './mockData/mockData';
 import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
@@ -20,7 +20,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator initialRouteName='Login'>
             <Stack.Screen name='Login' component={LoginScreen} />
-            <Stack.Screen name='New Activity' component={NewActivityForm} />
+            <Stack.Screen name='NewActivity' component={NewActivityForm} />
             <Stack.Screen name='UserActivityScreen' component={UserActivityScreen} />
             <Stack.Screen name='Home' component={HomeScreen} />
           </Stack.Navigator>
