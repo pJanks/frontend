@@ -1,32 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ActivityCard from "../ActivityCard/ActivityCard";
 import { View, StyleSheet, ScrollView } from "react-native";
-import ActivityContext from '../../context/ActivityContext';
 
-export default function UserLandingPage({ navigation }) {
+
+export default function UserLandingPage({ activities }) {
   return (
-    <ActivityContext.Consumer>
-      {context => {
-        return (
-        <ScrollView style={ styles.ScrollViewStyle }>
-          <View style={ styles.userActivities }>
-            {context.mockData.map(activity => {
-              console.log(activity.user.id)
-              return (
-              <ActivityCard
-              date={ activity.date }
-              location={ activity.location }
-              activity={ activity.activity.name }
-              forecast={ activity.forecast }
-              activityId={ activity.id }
-              userId={ activity.user.id }
-              navigation={ navigation }
-              />
-            )})}
-          </View>
-        </ScrollView>
-      )}}
-    </ActivityContext.Consumer>
+    <ScrollView style={ styles.ScrollViewStyle }>
+      <View style={ styles.userActivities }>
+        {activities.map(activity => (
+          <ActivityCard
+          date={ activity.date }
+          location={ activity.location }
+          activity={ activity.activity.name }
+          forecast={ activity.forecast }
+          activityId={ activity.id }
+          userId={ activity.user.id }
+          navigation={ navigation } />
+        ))}
+      </View>
+    </ScrollView>
   )
 }
 

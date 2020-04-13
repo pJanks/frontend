@@ -29,7 +29,7 @@ export default function NewActivityForm({ navigation }) {
 
   const onDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'android');
+    setShow(false);
     setDate(currentDate);
   };
 
@@ -68,7 +68,6 @@ export default function NewActivityForm({ navigation }) {
         onChangeText={(value) => setLocation(value)}
       />
       <Text style={ styles.label }>Date:</Text>
-      {/* <DatePicker onDateChange={(e) => setDate(e.target.date)} /> */}
       <View>
         <Button color='green' onPress={showDatepicker} title="Select a Date" />
       </View>
