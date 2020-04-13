@@ -10,15 +10,19 @@ export default function UserLandingPage({ navigation }) {
         return (
         <ScrollView style={ styles.ScrollViewStyle }>
           <View style={ styles.userActivities }>
-            {context.mockData.map(activity => (
+            {context.mockData.map(activity => {
+              console.log(activity.user.id)
+              return (
               <ActivityCard
               date={ activity.date }
               location={ activity.location }
               activity={ activity.activity.name }
               forecast={ activity.forecast }
+              activityId={ activity.id }
+              userId={ activity.user.id }
               navigation={ navigation }
               />
-            ))}
+            )})}
           </View>
         </ScrollView>
       )}}
