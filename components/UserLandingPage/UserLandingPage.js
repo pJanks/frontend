@@ -12,7 +12,10 @@ export default function UserLandingPage({ activities }) {
           date={ activity.date }
           location={ activity.location }
           activity={ activity.activity.name }
-          forecast={ activity.forecast } />
+          forecast={ activity.forecast }
+          activityId={ activity.id }
+          userId={ activity.user.id }
+          navigation={ navigation } />
         ))}
       </View>
     </ScrollView>

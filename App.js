@@ -6,6 +6,7 @@ import { ActivityContext } from './context/UserContext';
 import { mockData } from './mockData/mockData';
 import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
+import ActivityDetails from './screens/ActivityDetails/ActivityDetails';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import UserActivityScreen from './screens/UserActivityScreen/UserActivityScreen';
 import ActivityProvider from './provider/ActivityProvider';
@@ -23,6 +24,7 @@ export default function App() {
             <Stack.Screen name='NewActivity' component={NewActivityForm} />
             <Stack.Screen name='UserActivityScreen' component={UserActivityScreen} />
             <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='ActivityDetails' component={ActivityDetails} />
           </Stack.Navigator>
         </NavigationContainer>
     </ActivityProvider>

@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function ActivityCard({ date, location, activity, forecast }) {
+export default function ActivityCard({ date, location, activity, forecast, activityId, userId, navigation }) {
   return (
     <View style={ styles.activityCard }>
       <Text style={ styles.header }>Scheduled Activity:</Text>
@@ -11,9 +11,15 @@ export default function ActivityCard({ date, location, activity, forecast }) {
         <Text style={ styles.label } >{ activity } at/in: </Text>
         <Text>{ `${location}\n`}</Text>
         <Text style={ styles.label } >Forecast: </Text>
-        <Text>{ `${forecast}`}</Text>
+        <Text>{ `${forecast}\n\n` }</Text>
       </Text>
-      <Button style={ styles.buttonStyles } title='View Activity'></Button>
+      <Button
+        title='View Activity'
+        onPress={() => {
+          navigation.navigate('ActivityDetails', { activityId, userId })
+        }}
+        color ='#000'>
+      </Button>
     </View>
   );
 }
@@ -22,10 +28,10 @@ const styles = StyleSheet.create({
   activityCard: {
     borderWidth: 2,
     borderColor: "#000",
-    borderRadius: 4,
-    height: 195,
-    margin: 25,
-    padding: 15,
+    borderRadius: 25,
+    height: 260,
+    margin: 30,
+    padding: 20,
     width: '86%',
 
   },
@@ -34,7 +40,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
-  buttonStyles: {
+  bottomOfCard: {
+    marginBottom: 5000
   },
 
   header: {
