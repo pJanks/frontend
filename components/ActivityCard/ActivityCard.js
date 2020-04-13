@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function ActivityCard({ date, location, activity, forecast, navigation }) {
+export default function ActivityCard({ date, location, activity, forecast, activityId, userId, navigation }) {
   return (
     <View style={ styles.activityCard }>
       <Text style={ styles.header }>Scheduled Activity:</Text>
@@ -15,7 +15,9 @@ export default function ActivityCard({ date, location, activity, forecast, navig
       </Text>
       <Button
         title='View Activity'
-        onPress={() => navigation.navigate('ActivityDetails')}
+        onPress={() => {
+          navigation.navigate('ActivityDetails', { activityId, userId })
+        }}
         color ='#000'>
       </Button>
     </View>
