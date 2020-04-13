@@ -17,7 +17,7 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate('New Activity')} />
       </View>
       <Text>Scheduled Activities:</Text>
-      <UserLandingPage />
+      <UserLandingPage navigation={ navigation } />
     </View>
   )
 }
