@@ -1,7 +1,9 @@
 import React from 'react';
+import LoginScreen from './LoginScreen';
 
-describe('placeholder', () => {
-  test('placeholder test', () => {
-    expect(true).toEqual(true);
-  })
-})
+import renderer from 'react-test-renderer';
+
+test('renders correctly', () => {
+  const loginScreen = renderer.create(<LoginScreen />).toJSON();
+  expect(loginScreen).toMatchSnapshot();
+});

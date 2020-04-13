@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function ActivityCard({ date, location, activity, forecast, activityId, userId, navigation }) {
+export default function ActivityCard({ date, location, activity, forecast, activityId }) {
   return (
-    <View style={ styles.activityCard }>
+    <View style={ styles.activityCard } key={ activityId }>
       <Text style={ styles.header }>Scheduled Activity:</Text>
       <Text style={ styles.allActivityCardText }>
         <Text style={ styles.label } >Scheduled on: </Text>

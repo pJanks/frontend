@@ -1,5 +1,5 @@
 import React from 'react';
-import NewActivityForm from './NewActivityForm';
+import ActivityDetails from './ActivityDetails';
 
 import renderer from 'react-test-renderer';
 

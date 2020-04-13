@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "lightyellow",
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "padding": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 12,
+        }
+      }
+    >
+      High: 73° Low: 45°
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 64,
+        }
+      }
+    >
+      65°
+    </Text>
+  </View>
+  <View>
+    <Text>
+      [Weather Icon]
+    </Text>
+  </View>
+</View>
+`;

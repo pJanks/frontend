@@ -6,10 +6,16 @@ import { fetchAllUserActivities } from '../../apiCalls/apiCalls';
 
 export default function HomeScreen({ navigation }) {
   const [activities, setActivities] = useState([]);
+  const [userId, setUserId] = useState(0)
 
   useEffect(() => {
-    Promise.all([fetchAllUserActivities(1)
-      .then(data => setActivities(data.scheduled_activities))])
+    if (!activities.length) {
+      fetchAllUserActivities(1)
+        .then(data => {
+          setUserId(data.id)
+          setActivities(data.scheduled_activities)
+        })
+    }
   })
 
   return (
@@ -22,7 +28,7 @@ export default function HomeScreen({ navigation }) {
           onPress={() => navigation.navigate('NewActivity')} />
       </View>
       <Text>Scheduled Activities:</Text>
-      <UserLandingPage activities={activities} />
+      <UserLandingPage activities={ activities } userId={ userId } />
     </View>
   )
 }

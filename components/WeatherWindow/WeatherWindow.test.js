@@ -1,7 +1,11 @@
 import React from 'react';
+import WeatherWindow from './WeatherWindow';
 
-describe('placeholder', () => {
-  test('placeholder test', () => {
-    expect(true).toEqual(true);
-  })
-})
+import renderer from 'react-test-renderer';
+
+test('renders correctly', () => {
+
+  const weatherWindowComponent = renderer.create(<WeatherWindow />).toJSON();
+
+  expect(weatherWindowComponent).toMatchSnapshot();
+});
