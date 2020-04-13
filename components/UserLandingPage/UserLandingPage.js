@@ -3,20 +3,21 @@ import ActivityCard from "../ActivityCard/ActivityCard";
 import { View, StyleSheet, ScrollView } from "react-native";
 
 
-export default function UserLandingPage({ activities }) {
+export default function UserLandingPage({ activities, userId }) {
+  console.log('here: ', userId);
   return (
     <ScrollView style={ styles.ScrollViewStyle }>
       <View style={ styles.userActivities }>
-        {activities.map(activity => (
+        {activities.map(activity => {
+          return (
           <ActivityCard
           date={ activity.date }
           location={ activity.location }
           activity={ activity.activity.name }
           forecast={ activity.forecast }
           activityId={ activity.id }
-          userId={ activity.user.id }
-          navigation={ navigation } />
-        ))}
+          />
+        )})}
       </View>
     </ScrollView>
   )
