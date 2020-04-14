@@ -39,12 +39,12 @@ describe('fetchAllUserActivities', () => {
     })
 
     test('should call fetch with the correct URL', () => {
-      fetchAllUserActivities();
-      expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/1/scheduled_activities`)
+      fetchAllUserActivities(1);
+      expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/users/1/scheduled_activities`)
     })
     
     test('should return an object with user activity data', () => {
-      fetchAllUserActivities()
+      fetchAllUserActivities(1)
         .then(data => expect(data).toEqual(mockResponse))
     })
   
@@ -55,7 +55,7 @@ describe('fetchAllUserActivities', () => {
         })
       });
   
-      expect(fetchAllUserActivities()).rejects.toEqual(Error('Failed to retrieve user activities.'))
+      expect(fetchAllUserActivities(1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     });
   
     test('should return an error if the Promise rejects', () => {
@@ -63,7 +63,7 @@ describe('fetchAllUserActivities', () => {
         return Promise.reject(Error('Failed to retrieve user activities.'))
       })
   
-      expect(fetchAllUserActivities()).rejects.toEqual(Error('Failed to retrieve user activities.'))
+      expect(fetchAllUserActivities(1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     })
   })
 
