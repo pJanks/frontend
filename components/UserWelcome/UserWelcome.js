@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-export default function UserWelcome() {
+export default function UserWelcome(userInfo) {
   let today = new Date();
   let dd = String(today.getDate()).padStart(2, '0');
   let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
   let yyyy = today.getFullYear();
 
   today = yyyy + '/' + mm + '/' + dd;
-
+  console.log(userInfo)
   return (
     <View style={ styles.container }>
-      <Text style={ styles.welcome }>Welcome, [Username]!</Text>
+      <Text style={ styles.welcome }>Welcome, {`${userInfo.userInfo.firstName} ${userInfo.userInfo.lastName}`}!</Text>
       <Text style={ styles.date }>Today's date is {today}</Text>
     </View>
   )
@@ -19,7 +19,7 @@ export default function UserWelcome() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'lightblue',
+    backgroundColor: '#FFBD58',
     padding: 10,
   },
   welcome: {
