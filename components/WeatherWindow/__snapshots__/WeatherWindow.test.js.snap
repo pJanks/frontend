@@ -37,6 +37,12 @@ exports[`renders correctly 1`] = `
       65°
     </Text>
   </View>
-  <View />
+  <View>
+    <div
+      data-testid="skycon"
+    >
+      mock skycon
+    </div>
+  </View>
 </View>
 `;
