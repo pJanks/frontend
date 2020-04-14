@@ -37,10 +37,6 @@ exports[`renders correctly 1`] = `
       65°
     </Text>
   </View>
-  <View>
-    <Text>
-      [Weather Icon]
-    </Text>
-  </View>
+  <View />
 </View>
 `;

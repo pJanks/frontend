@@ -4,7 +4,7 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "lightblue",
+      "backgroundColor": "#FFBD58",
       "padding": 10,
     }
   }
@@ -17,7 +17,9 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    Welcome, [Username]!
+    Welcome, 
+    undefined undefined
+    !
   </Text>
   <Text
     style={
@@ -28,7 +30,7 @@ exports[`renders correctly 1`] = `
     }
   >
     Today's date is 
-    2020/04/13
+    2020/04/14
   </Text>
 </View>
 `;
