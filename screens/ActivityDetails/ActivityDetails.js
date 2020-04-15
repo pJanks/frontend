@@ -10,10 +10,11 @@ export default function ActivityDetails({ route, navigation }) {
 
 
   const { activityId, userId } = route.params
+  console.log(userId, activityId)
 
   useEffect(() => {
     if (!activity) {
-      fetchScheduledActivity(activityId, userId)
+      fetchScheduledActivity(userId, activityId)
       .then(data => {
         setWeatherCondition(data.status)
         setActivity(data)

@@ -9,12 +9,12 @@ export const fetchAllUserActivities = async (userId) => {
       return response.json()})
 }
 
-export const postNewActivity = async ({userId, activity, location, date}) => {
-  const url = `/api/v1/users/${userId}/scheduled_activities/new`;
+export const postNewActivity = async ({id, activity, location, date}) => {
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${id}/scheduled_activities/new`;
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      activity: activity,
+      activity_name: activity,
       location: location,
       date: date
     }),
@@ -31,7 +31,8 @@ export const postNewActivity = async ({userId, activity, location, date}) => {
         })
 }
 
-export const fetchScheduledActivity = async (activityId, userId) => {
+export const fetchScheduledActivity = async (userId, activityId) => {
+  console.log(userId)
   const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities/${activityId}`;
   return await fetch(url)
     .then(response => {
@@ -41,3 +42,15 @@ export const fetchScheduledActivity = async (activityId, userId) => {
       }
       return response.json()})
 }
+
+export const fetchActivityList = async () => {
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/activities`;
+  return await fetch(url)
+    .then(response => {
+      if(!response.ok) {
+        console.log(response)
+        throw Error('Failed to retrieve user activities.')
+      }
+      return response.json()})
+}
+

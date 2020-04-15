@@ -1,9 +1,7 @@
-import React, { useState, Component } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { ActivityContext } from './context/ActivityContext';
-import { mockData } from './mockData/mockData';
 import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import ActivityDetails from './screens/ActivityDetails/ActivityDetails';
@@ -28,12 +26,3 @@ export default function App() {
     </ActivityProvider>
     )
   }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e0ffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

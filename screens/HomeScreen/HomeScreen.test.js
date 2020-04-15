@@ -3,13 +3,10 @@ import HomeScreen from './HomeScreen';
 
 import renderer from 'react-test-renderer';
 
-test('testing suite runs', () => {
-  expect(true).toEqual(true)
+describe('HomeScreen', () => {
+  test('should load with props', () => {
+    const mockNavigation = { navigate: jest.fn() };
+    const homeScreen = renderer.create(<HomeScreen navigation={mockNavigation} />)
+    expect(homeScreen).toMatchSnapshot();
+  });
 })
-
-// test('renders correctly', () => {
-//
-//   const HomeScreen = renderer.create(<HomeScreen />).toJSON();
-//
-//   expect(HomeScreen).toMatchSnapshot();
-// });
