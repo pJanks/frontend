@@ -25,7 +25,11 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      High: 73° Low: 45°
+      High: 
+      46.61
+      °F Low: 
+      28.48
+      °F
     </Text>
     <Text
       style={
@@ -34,15 +38,9 @@ exports[`renders correctly 1`] = `
         }
       }
     >
-      65°
+      45.03
+      °F
     </Text>
-  </View>
-  <View>
-    <div
-      data-testid="skycon"
-    >
-      mock skycon
-    </div>
   </View>
 </View>
 `;
