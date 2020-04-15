@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button } from "react-native";
+import { deleteActivity } from '../../apiCalls/apiCalls';
 
-export default function ActivityCard({ date, location, activity, forecast, activityId, userId, navigation }) {
+export default function ActivityCard({ date, location, activity, forecast, activityId, userId, updateUserActivities, navigation }) {
+  const [deletedActivityId, setDeletedActivity] = useState(0)
+
   return (
     <View style={ styles.activityCard } key={ activityId }>
       <Text style={ styles.header }>{`${activity}`}</Text>
@@ -19,10 +22,25 @@ export default function ActivityCard({ date, location, activity, forecast, activ
       </View>
       <View style={ styles.buttonContainer}>
         <Button
+          buttonStyle={ styles.buttonStyle }
           title='View Activity'
           onPress={() => {
             navigation.navigate('ActivityDetails', { activityId, userId })
           }}
+          color= '#07407b' />
+        <Button
+          buttonStyle={ styles.buttonStyle }
+          title='Delete Activity'
+          onPress={() => {
+            Promise.all([deleteActivity(activityId, userId)
+              ])
+              .then(response => {
+                console.log(response);
+                setDeletedActivity(activityId)
+              })
+              updateUserActivities()
+            }
+          }
           color= '#07407b' />
       </View>
     </View>
@@ -30,6 +48,10 @@ export default function ActivityCard({ date, location, activity, forecast, activ
 }
 
 const styles = StyleSheet.create({
+  buttonStyle: {
+    margin: 5,
+  },
+
   activityCard: {
     backgroundColor: '#fff',
     borderWidth: 2,
