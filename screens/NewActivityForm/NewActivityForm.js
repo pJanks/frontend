@@ -10,7 +10,7 @@ export default function NewActivityForm({ navigation, route }) {
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
   const [activityList, setActivityList] = useState();
-  const [date, setDate] = useState(new Date(1586051730000));
+  const [date, setDate] = useState(new Date(Date.now()));
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState('date');
   const getCurrentDate = (date) => {
@@ -63,9 +63,9 @@ export default function NewActivityForm({ navigation, route }) {
             style={ styles.picker }
             onValueChange={(itemValue) => setActivity(itemValue)}
           >
-            <Picker.Item label='Select an activity...' value={0} key={0} />
+            <Picker.Item label='Select an activity...' value={0} />
             { activityList.map(activity => (
-              <Picker.Item label={activity.name} value={activity.value} key={activity.value} />
+              <Picker.Item label={activity.name} value={activity.value} />
             ))}
           </Picker>
         </View>
@@ -88,7 +88,7 @@ export default function NewActivityForm({ navigation, route }) {
             is24Hour={true}
             display="default"
             onChange={onDateChange}
-          />
+        />
         )}
         <View style={ styles.createActivity }>
           <Button
@@ -96,10 +96,8 @@ export default function NewActivityForm({ navigation, route }) {
             onPress={() => {
               let formatDate = getCurrentDate(date)
               let newActivity = ({id: userInfo.id, activity, location: location, date: formatDate})
-              postNewActivity(newActivity)
-                .then(resp => navigation.navigate('ActivityDetails', resp))
-              //Date not currently passing. Will be sent to an API call instead and this is just testing
-              // navigation.navigate('UserActivityScreen', {activity, location, formatDate})
+              Promise.all([postNewActivity(newActivity)
+                .then(resp => navigation.navigate('ActivityDetails', resp.id))])
             }}
           />
         </View>
