@@ -2,10 +2,16 @@
 
 exports[`renders correctly 1`] = `
 <RCTScrollView
+  contentContainerStyle={
+    Object {
+      "alignItems": "center",
+      "flexGrow": 1,
+    }
+  }
   style={
     Object {
-      "borderWidth": 2,
-      "height": "100%",
+      "backgroundColor": "#b2e1f4",
+      "height": "78.75%",
     }
   }
 >
@@ -13,84 +19,120 @@ exports[`renders correctly 1`] = `
     <View
       style={
         Object {
-          "borderWidth": 1,
-          "paddingBottom": 320,
+          "backgroundColor": "#fff",
+          "borderColor": "#07407b",
+          "borderRadius": 25,
+          "borderWidth": 2,
+          "margin": 10,
+          "padding": 20,
+          "width": "85%",
         }
       }
     >
+      <Text
+        style={
+          Object {
+            "fontSize": 25,
+            "marginBottom": 10,
+            "textAlign": "center",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Baseball
+      </Text>
       <View
         style={
           Object {
-            "borderColor": "#000",
-            "borderRadius": 25,
-            "borderWidth": 2,
-            "height": 260,
-            "margin": 30,
-            "padding": 20,
-            "width": "86%",
+            "flexDirection": "row",
+            "margin": 2,
           }
         }
       >
         <Text
           style={
             Object {
-              "fontSize": 25,
-              "marginBottom": 10,
-              "paddingHorizontal": "7%",
-              "textDecorationLine": "underline",
+              "fontSize": 16,
+              "fontWeight": "bold",
             }
           }
         >
-          Scheduled Activity:
+          Scheduled on: 
         </Text>
         <Text
           style={
             Object {
-              "fontSize": 20,
+              "fontSize": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Scheduled on: 
-          </Text>
-          <Text>
-            2020-04-08T16:57:12Z
-
-          </Text>
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-             at/in: 
-          </Text>
-          <Text>
-            Denver, CO
-
-          </Text>
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Forecast: 
-          </Text>
-          <Text>
-            Overcast
-
-
-          </Text>
+          2020-04-08
         </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Baseball
+           at/in: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          Denver, CO
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Forecast: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          Overcast
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginTop": 15,
+          }
+        }
+      >
         <View
           accessibilityRole="button"
           accessibilityStates={Array []}
@@ -127,7 +169,7 @@ exports[`renders correctly 1`] = `
                     "textAlign": "center",
                   },
                   Object {
-                    "color": "#000",
+                    "color": "#07407b",
                   },
                 ]
               }
@@ -137,79 +179,124 @@ exports[`renders correctly 1`] = `
           </View>
         </View>
       </View>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderColor": "#07407b",
+          "borderRadius": 25,
+          "borderWidth": 2,
+          "margin": 10,
+          "padding": 20,
+          "width": "85%",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 25,
+            "marginBottom": 10,
+            "textAlign": "center",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Hiking
+      </Text>
       <View
         style={
           Object {
-            "borderColor": "#000",
-            "borderRadius": 25,
-            "borderWidth": 2,
-            "height": 260,
-            "margin": 30,
-            "padding": 20,
-            "width": "86%",
+            "flexDirection": "row",
+            "margin": 2,
           }
         }
       >
         <Text
           style={
             Object {
-              "fontSize": 25,
-              "marginBottom": 10,
-              "paddingHorizontal": "7%",
-              "textDecorationLine": "underline",
+              "fontSize": 16,
+              "fontWeight": "bold",
             }
           }
         >
-          Scheduled Activity:
+          Scheduled on: 
         </Text>
         <Text
           style={
             Object {
-              "fontSize": 20,
+              "fontSize": 16,
             }
           }
         >
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Scheduled on: 
-          </Text>
-          <Text>
-            2020-04-18T12:00:00Z
-
-          </Text>
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-             at/in: 
-          </Text>
-          <Text>
-            Breckenridge, CO
-
-          </Text>
-          <Text
-            style={
-              Object {
-                "fontWeight": "bold",
-              }
-            }
-          >
-            Forecast: 
-          </Text>
-          <Text>
-            Sunny
-
-
-          </Text>
+          2020-04-18
         </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Hiking
+           at/in: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          Breckenridge, CO
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+            "margin": 2,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Forecast: 
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+            }
+          }
+        >
+          Sunny
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginTop": 15,
+          }
+        }
+      >
         <View
           accessibilityRole="button"
           accessibilityStates={Array []}
@@ -246,7 +333,7 @@ exports[`renders correctly 1`] = `
                     "textAlign": "center",
                   },
                   Object {
-                    "color": "#000",
+                    "color": "#07407b",
                   },
                 ]
               }

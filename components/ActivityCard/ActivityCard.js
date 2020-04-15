@@ -4,54 +4,59 @@ import { View, Text, StyleSheet, Button } from "react-native";
 export default function ActivityCard({ date, location, activity, forecast, activityId }) {
   return (
     <View style={ styles.activityCard } key={ activityId }>
-      <Text style={ styles.header }>Scheduled Activity:</Text>
-      <Text style={ styles.allActivityCardText }>
+      <Text style={ styles.header }>{`${activity}`}</Text>
+      <View style={ styles.textContainer }>
         <Text style={ styles.label } >Scheduled on: </Text>
-        <Text>{ `${date}\n`}</Text>
+        <Text style={ styles.content }>{ `${date.split('T')[0]}`}</Text>
+      </View>
+      <View style={ styles.textContainer }>
         <Text style={ styles.label } >{ activity } at/in: </Text>
-        <Text>{ `${location}\n`}</Text>
+        <Text style={ styles.content }>{ `${location}`}</Text>
+      </View>
+      <View style={ styles.textContainer }>
         <Text style={ styles.label } >Forecast: </Text>
-        <Text>{ `${forecast}\n\n` }</Text>
-      </Text>
-      <Button
-        title='View Activity'
-        onPress={() => {
-          navigation.navigate('ActivityDetails', { activityId, userId })
-        }}
-        color ='#000'>
-      </Button>
+        <Text style={ styles.content }>{ `${forecast}` }</Text>
+      </View>
+      <View style={ styles.buttonContainer}>
+        <Button
+          title='View Activity'
+          onPress={() => {
+            navigation.navigate('ActivityDetails', { activityId, userId })
+          }}
+          color= '#07407b' />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   activityCard: {
+    backgroundColor: '#fff',
     borderWidth: 2,
-    borderColor: "#000",
+    borderColor: "#07407b",
     borderRadius: 25,
-    height: 260,
-    margin: 30,
+    margin: 10,
     padding: 20,
-    width: '86%',
-
+    width: '85%',
   },
-
-  allActivityCardText: {
-    fontSize: 20
+  textContainer: {
+    flexDirection: 'row',
+    margin: 2,
   },
-
-  bottomOfCard: {
-    marginBottom: 5000
-  },
-
   header: {
     fontSize: 25,
     marginBottom: 10,
-    paddingHorizontal: '7%',
+    textAlign: 'center',
     textDecorationLine: 'underline'
   },
-
   label: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  content: {
+    fontSize: 16
+  },
+  buttonContainer: {
+    marginTop: 15
   }
 });

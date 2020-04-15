@@ -8,7 +8,6 @@ import NewActivityForm from './screens/NewActivityForm/NewActivityForm';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import ActivityDetails from './screens/ActivityDetails/ActivityDetails';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
-import UserActivityScreen from './screens/UserActivityScreen/UserActivityScreen';
 import ActivityProvider from './provider/ActivityProvider';
 
 const Stack = createStackNavigator();
@@ -22,7 +21,6 @@ export default function App() {
           <Stack.Navigator initialRouteName='Login'>
             <Stack.Screen name='Login' component={LoginScreen} />
             <Stack.Screen name='NewActivity' component={NewActivityForm} />
-            <Stack.Screen name='UserActivityScreen' component={UserActivityScreen} />
             <Stack.Screen name='Home' component={HomeScreen} />
             <Stack.Screen name='ActivityDetails' component={ActivityDetails} />
           </Stack.Navigator>
@@ -34,7 +32,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#b2b2b2',
+    backgroundColor: '#e0ffff',
     alignItems: 'center',
     justifyContent: 'center',
   },

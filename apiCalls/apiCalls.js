@@ -1,5 +1,5 @@
 export const fetchAllUserActivities = async (userId) => {
-  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/1/scheduled_activities`;
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities`;
   return await fetch(url)
     .then(response => {
       if(!response.ok) {
@@ -14,9 +14,9 @@ export const postNewActivity = async ({userId, activity, location, date}) => {
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      activity,
-      location,
-      date
+      activity: activity,
+      location: location,
+      date: date
     }),
     headers: {
       'Content-Type': 'application/json'

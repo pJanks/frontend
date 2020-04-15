@@ -4,13 +4,13 @@ exports[`renders correctly 1`] = `
 <View
   style={
     Object {
-      "borderColor": "#000",
+      "backgroundColor": "#fff",
+      "borderColor": "#07407b",
       "borderRadius": 25,
       "borderWidth": 2,
-      "height": 260,
-      "margin": 30,
+      "margin": 10,
       "padding": 20,
-      "width": "86%",
+      "width": "85%",
     }
   }
 >
@@ -19,36 +19,53 @@ exports[`renders correctly 1`] = `
       Object {
         "fontSize": 25,
         "marginBottom": 10,
-        "paddingHorizontal": "7%",
+        "textAlign": "center",
         "textDecorationLine": "underline",
       }
     }
   >
-    Scheduled Activity:
+    Hiking
   </Text>
-  <Text
+  <View
     style={
       Object {
-        "fontSize": 20,
+        "flexDirection": "row",
+        "margin": 2,
       }
     }
   >
     <Text
       style={
         Object {
+          "fontSize": 16,
           "fontWeight": "bold",
         }
       }
     >
       Scheduled on: 
     </Text>
-    <Text>
-      2020-04-06
-
-    </Text>
     <Text
       style={
         Object {
+          "fontSize": 16,
+        }
+      }
+    >
+      2020-04-06
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "margin": 2,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
           "fontWeight": "bold",
         }
       }
@@ -56,68 +73,95 @@ exports[`renders correctly 1`] = `
       Hiking
        at/in: 
     </Text>
-    <Text>
-      Denver, CO
-
-    </Text>
     <Text
       style={
         Object {
+          "fontSize": 16,
+        }
+      }
+    >
+      Denver, CO
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "margin": 2,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
           "fontWeight": "bold",
         }
       }
     >
       Forecast: 
     </Text>
-    <Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 16,
+        }
+      }
+    >
       Overcast
-
-
     </Text>
-  </Text>
+  </View>
   <View
-    accessibilityRole="button"
-    accessibilityStates={Array []}
-    accessible={true}
-    focusable={true}
-    isTVSelectable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "opacity": 1,
+        "marginTop": 15,
       }
     }
   >
     <View
+      accessibilityRole="button"
+      accessibilityStates={Array []}
+      accessible={true}
+      focusable={true}
+      isTVSelectable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
-        Array [
-          Object {},
-        ]
+        Object {
+          "opacity": 1,
+        }
       }
     >
-      <Text
+      <View
         style={
           Array [
-            Object {
-              "color": "#007AFF",
-              "fontSize": 18,
-              "padding": 8,
-              "textAlign": "center",
-            },
-            Object {
-              "color": "#000",
-            },
+            Object {},
           ]
         }
       >
-        View Activity
-      </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#007AFF",
+                "fontSize": 18,
+                "padding": 8,
+                "textAlign": "center",
+              },
+              Object {
+                "color": "#07407b",
+              },
+            ]
+          }
+        >
+          View Activity
+        </Text>
+      </View>
     </View>
   </View>
 </View>

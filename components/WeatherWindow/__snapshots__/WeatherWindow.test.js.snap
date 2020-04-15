@@ -38,9 +38,11 @@ exports[`renders correctly 1`] = `
     </Text>
   </View>
   <View>
-    <Text>
-      [Weather Icon]
-    </Text>
+    <div
+      data-testid="skycon"
+    >
+      mock skycon
+    </div>
   </View>
 </View>
 `;

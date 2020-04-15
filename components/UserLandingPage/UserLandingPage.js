@@ -3,39 +3,33 @@ import ActivityCard from "../ActivityCard/ActivityCard";
 import { View, StyleSheet, ScrollView } from "react-native";
 
 
-export default function UserLandingPage({ activities, userId }) {
-  console.log('here: ', userId);
+export default function UserLandingPage({ activities, userInfo }) {
   return (
-    <ScrollView style={ styles.ScrollViewStyle }>
-      <View style={ styles.userActivities }>
-        {activities.map(activity => {
-          return (
-          <ActivityCard
-          date={ activity.date }
-          location={ activity.location }
-          activity={ activity.activity.name }
-          forecast={ activity.forecast }
-          activityId={ activity.id }
-          />
-        )})}
-      </View>
-    </ScrollView>
+        <ScrollView 
+          style={ styles.ScrollViewStyle } 
+          contentContainerStyle={ styles.grow }>
+          {activities.map(activity => {
+            return (
+            <ActivityCard
+            date={ activity.date }
+            location={ activity.location }
+            activity={ activity.activity }
+            forecast={ activity.forecast }
+            activityId={ activity.id }
+            key={ activity.id }
+            />
+          )})}
+        </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-  userActivities: {
-    //need logic to dynamically style height based on how many cards exist in the
-    //users array, of figure out a different way to implement scroll so that we
-    //aren't using a fixed
-    borderWidth: 1,
-    paddingBottom: 320
-
-  }, ScrollViewStyle: {
-    //need logic to dynamically style height based on how many cards exist in the
-    //users array, of figure out a different way to implement scroll so that we
-    //aren't using a fixed
-    height: '100%',
-    borderWidth: 2,
+  ScrollViewStyle: {
+    height: '78.75%',
+    backgroundColor: '#b2e1f4',
+  },
+  grow: {
+    flexGrow: 1, 
+    alignItems: 'center'
   }
 });
