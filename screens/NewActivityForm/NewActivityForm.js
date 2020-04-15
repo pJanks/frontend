@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, Button, Picker, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { postNewActivity } from '../../apiCalls/apiCalls';
+import Loading from '../../components/Loading/Loading';
 
 
-export default function NewActivityForm({ navigation }) {
+export default function NewActivityForm({ navigation, route }) {
+  const { userInfo } = route.params;
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
-  const [date, setDate] = useState(new Date(1586051730000));
+  const [newActivityId, setNewActivityId] = useState();
+  const [date, setDate] = useState(new Date(Date.now()));
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState('date');
-
   const getCurrentDate = (date) => {
     let year = date.getFullYear();
     let month, day;
@@ -23,7 +26,6 @@ export default function NewActivityForm({ navigation }) {
     } else {
       day = date.getDate();
     }
-    this.date = year + "-" + month + "-" + day;
     return year + "-" + month + "-" + day;
   }
 
@@ -42,58 +44,72 @@ export default function NewActivityForm({ navigation }) {
     showMode('date');
   };
 
-  return (
-    <View style={ styles.container }>
-      <Text style={ styles.label }>Activity:</Text>
-      <View>
-        <Picker
-          selectedValue={activity}
-          style={ styles.picker }
-          onValueChange={(itemValue) => setActivity(itemValue)}
-        >
-          <Picker.Item label='Select an activity...' value={0} />
-          <Picker.Item label='Hiking' value={1} />
-          <Picker.Item label='Climbing' value={2} />
-          <Picker.Item label='Biking' value={3} />
-          <Picker.Item label='Running' value={4} />
-          <Picker.Item label='Kayaking' value={5} />
-          <Picker.Item label='Skiing' value={6} />
-          <Picker.Item label='Snowboarding' value={7} />
-        </Picker>
-      </View>
-      <Text style={ styles.label }>Location:</Text>
-      <TextInput       
-        style={ styles.location }
-        value={ location }
-        onChangeText={(value) => setLocation(value)}
-      />
-      <Text style={ styles.label }>Date:</Text>
-      <View>
-        <Button color='green' onPress={showDatepicker} title="Select a Date" />
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          timeZoneOffsetInMinutes={0}
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onDateChange}
+    return (
+      <View style={ styles.container }>
+        <Text style={ styles.label }>Activity:</Text>
+        <View>
+          <Picker
+            selectedValue={activity}
+            style={ styles.picker }
+            onValueChange={(itemValue) => setActivity(itemValue)}
+          >
+            <Picker.Item label='Select an activity...' value={0} />
+            <Picker.Item label='Mountain Biking' value='Mountain Biking' />
+            <Picker.Item label='Hiking' value='Hiking' />
+            <Picker.Item label='Road Biking' value='Road Biking' />
+            <Picker.Item label='Baseball' value='Baseball' />
+            <Picker.Item label='Golf' value='Golf' />
+            <Picker.Item label='Cricket' value='Cricket' />
+            <Picker.Item label='Diving' value='Diving' />
+            <Picker.Item label='Soccer' value='Soccer' />
+            <Picker.Item label='Football' value='Football' />
+            <Picker.Item label='Frisbee' value='Frisbee' />
+            <Picker.Item label='Horseback Riding' value='Horseback Riding' />
+            <Picker.Item label='Kayaking' value='Kayaking' />
+            <Picker.Item label='Stand-up Paddle Boarding' value='Stand-up Paddle Boarding' />
+            <Picker.Item label='Rafting' value='Rafting' />
+            <Picker.Item label='Snowboarding' value='Snowboarding' />
+            <Picker.Item label='Skiing' value='Skiing' />
+            <Picker.Item label='Paragliding' value='Paragliding' />
+            <Picker.Item label='Rock Climbing' value='Rock Climbing' />
+            <Picker.Item label='Running' value='Running' />
+          </Picker>
+        </View>
+        <Text style={ styles.label }>Location:</Text>
+        <TextInput       
+          style={ styles.location }
+          value={ location }
+          onChangeText={(value) => setLocation(value)}
         />
-      )}
-      <View style={ styles.createActivity }>
-        <Button
-          title="Create Activity"
-          onPress={() => {
-            let formatDate = getCurrentDate(date)
-            //Date not currently passing. Will be sent to an API call instead and this is just testing
-            navigation.navigate('UserActivityScreen', {activity, location, formatDate})}}
+        <Text style={ styles.label }>Date:</Text>
+        <View>
+          <Button color='green' onPress={showDatepicker} title="Select a Date" />
+        </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onDateChange}
         />
+        )}
+        <View style={ styles.createActivity }>
+          <Button
+            title="Create Activity"
+            onPress={() => {
+              let formatDate = getCurrentDate(date)
+              let newActivity = ({id: userInfo.id, activity, location: location, date: formatDate})
+              Promise.all([postNewActivity(newActivity)
+                .then(resp => navigation.navigate('ActivityDetails', {activityId: resp.id, userId: userInfo.id}))])
+            }}
+          /> 
+        </View>
       </View>
-    </View>
-  )
-}
+    )
+  }
 
 const styles = StyleSheet.create({
   container: {
