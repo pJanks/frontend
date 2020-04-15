@@ -30,7 +30,7 @@ export default function HomeScreen({ navigation }) {
           <Button
             buttonStyle={ styles.createActivityButton }
             title='Create New Activity'
-            onPress={() => navigation.navigate('NewActivity', {userInfo})} />
+            onPress={() => navigation.navigate('NewActivity', {userInfo, updateUserActivities})} />
         </View>
         <UserLandingPage activities={ activities } userInfo={userInfo} navigation={navigation} updateUserActivities={updateUserActivities} />
       </View>
