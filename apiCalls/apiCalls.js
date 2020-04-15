@@ -10,7 +10,6 @@ export const fetchAllUserActivities = async (userId) => {
 }
 
 export const postNewActivity = async ({id, activity, location, date}) => {
-  console.log({id, activity, location, date})
   const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${id}/scheduled_activities/new`;
   const options = {
     method: 'POST',
@@ -32,11 +31,8 @@ export const postNewActivity = async ({id, activity, location, date}) => {
         })
 }
 
-<<<<<<< HEAD
-export const fetchScheduledActivity = async (activityId, userId) => {
-=======
 export const fetchScheduledActivity = async (userId, activityId) => {
->>>>>>> Fix endpoints
+  console.log(userId)
   const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities/${activityId}`;
   return await fetch(url)
     .then(response => {
@@ -46,8 +42,6 @@ export const fetchScheduledActivity = async (userId, activityId) => {
       }
       return response.json()})
 }
-<<<<<<< HEAD
-=======
 
 export const fetchActivityList = async () => {
   const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/activities`;
@@ -60,4 +54,3 @@ export const fetchActivityList = async () => {
       return response.json()})
 }
 
->>>>>>> Add activity list fetch for form dropdown
