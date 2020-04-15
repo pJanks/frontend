@@ -1,62 +1,80 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Text, Button } from "react-native";
 import ActivityContext from '../../context/ActivityContext';
+import { fetchSingleActivityData } from '../../apiCalls/apiCalls';
 
 export default function ActivityDetails({ route, navigation }) {
-  const badWeatherTerms = []
+  const [weatherCondition, setWeatherCondition] = useState('')
+  const [activity, setActivity] = useState('')
+  let goodWeather = true;
+
+
   const { activityId, userId } = route.params
-  return (
-    <ActivityContext.Consumer>
-      {context => {
-        if (context.goodWeather) {
-          return (
-            <ScrollView>
-              <View>
-                <Text>You have scheduled: { `${context.mockData[0].activity.name}\n` }</Text>
-                <Text>on: { `${context.mockData[0].date}\n` }</Text>
-                <Text>in: { `${context.mockData[0].location}\n` }</Text>
-                <Text>The Weather looks great: { `${context.mockData[0].forecast}\n\n\n` }</Text>
-                <Button
-                  title='In Case You Wanted To Stay In . . .'>
-                </Button>
-              </View>
-            </ScrollView>
-//activity:
-//             id: 1
-// muscle_groups: Array(2)
-// 0: {id: 1, name: "Biceps", exercise_set: Array(1)}
-// 1: {id: 2, name: "Forearms", exercise_set: Array(2)}
-// length: 2
-// __proto__: Array(0)
-// name: "Hiking"
-// __proto__: Object
-// created_at: "2020-04-06T03:23:26.122544Z"
-// date: "2020-04-06"
-// forecast: "Overcast"
-// forecast_img: "cloudy"
-// id: 1
-// location: "Denver, CO"
-// updated_at: "2020-04-06T03:23:26.122555Z"
-// user:
-// first_name: "user"
-// id: 1
-// last_name: "name"
-// __proto__: Object
-// __proto__: Object
-          )} else {
-          return (
-            <ScrollView>
-              <View>
-                <Text>hi</Text>
-              </View>
-            </ScrollView>
-          )
-        }
-      }
+
+  useEffect(() => {
+    if (!activity) {
+      fetchSingleActivityData(activityId, userId)
+      .then(data => {
+        setWeatherCondition(data.status)
+        setActivity(data)
+      })
     }
-    </ActivityContext.Consumer>
-  )
-}
+  })
+
+  if(!activity) {
+    return null
+  } else if (weatherCondition === 'good') {
+    return (
+      <ScrollView>
+        <View>
+          <Text>The weather looks great!!</Text>
+
+          <Button
+            title='In Case You Want To Stay In'
+            onPress={() => setWeatherCondition('bad')}
+          >
+          </Button>
+        </View>
+      </ScrollView>
+    )} else {
+      let primaryMuscleExercises = activity.activity.primary_muscles.map(primaryMuscleGroup => {
+        return (
+          <View>
+            <Text>Primary Muscle Group:{` ${primaryMuscleGroup.name}\n\n`}</Text>
+            <Text>{ `${primaryMuscleGroup.primary_exercises[0].name}\n\n` }</Text>
+            <Text>{ `Necessary Equipment: ${primaryMuscleGroup.primary_exercises[0].equipment}\n\n` }</Text>
+            <Text>{ `Exercise Description: ${primaryMuscleGroup.primary_exercises[0].description}\n\n` }</Text>
+            <Text>{ `Instructions: ${primaryMuscleGroup.primary_exercises[0].instructions}\n\n` }</Text>
+          </View>
+        )
+      })
+
+      let secondaryMuscleExercises = activity.activity.secondary_muscles.map(secondaryMuscleGroup => {
+        return (
+          <View>
+            <Text>Secondary Muscle Group:{` ${secondaryMuscleGroup.name}\n\n`}</Text>
+            <Text>{ `${secondaryMuscleGroup.secondary_exercises[0].name}\n\n` }</Text>
+            <Text>{ `Necessary Equipment: ${secondaryMuscleGroup.secondary_exercises[0].equipment}\n\n` }</Text>
+            <Text>{ `Exercise Description: ${secondaryMuscleGroup.secondary_exercises[0].description}\n\n` }</Text>
+            <Text>{ `Instructions: ${secondaryMuscleGroup.secondary_exercises[0].instructions}\n\n` }</Text>
+          </View>
+        )
+      })
+      return (
+        <ScrollView>
+          <View>
+          { primaryMuscleExercises }
+          { secondaryMuscleExercises }
+          <Button
+          title='Hide'
+          onPress={() => setWeatherCondition('good')}
+          >
+              </Button>
+          </View>
+        </ScrollView>
+      )
+    }
+  }
 
 const styles = StyleSheet.create({
   something: {
