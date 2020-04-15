@@ -27,7 +27,9 @@ export default function HomeScreen({ navigation }) {
         })
     }
   })
-  if (activities && userInfo) {
+  if (!activities || !userInfo) {
+    return <Loading />
+  } else if (activities && userInfo && viewPreviousActivities === false) {
     return (
       <View>
         <UserWelcome userInfo={userInfo} />
@@ -54,7 +56,31 @@ export default function HomeScreen({ navigation }) {
       </View>
     )
   } else {
-    return <Loading />
+    return (
+      <View>
+        <UserWelcome userInfo={userInfo} />
+        <View style={ styles.createActivityButton }>
+          <Button
+            buttonStyle={ styles.createActivityButton }
+            title='Create New Activity'
+            onPress={() => navigation.navigate('NewActivity', {userInfo, updateUserActivities})} />
+        </View>
+        <View style={ styles.createActivityButton }>
+          <Button
+            buttonStyle={ styles.createActivityButton }
+            title='View Current Activities'
+            onPress={() => setViewPreviousActivities(false)} />
+        </View>
+        <UserLandingPage 
+          activities={ activities }
+          currentActivities={ currentActivities } 
+          previousActivities={ previousActivities }
+          viewPreviousActivities={ viewPreviousActivities } 
+          userInfo={userInfo} 
+          navigation={navigation} 
+          updateUserActivities={updateUserActivities} />
+      </View>
+    )
   }
 }
 
