@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, Button, Picker, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { postNewActivity, fetchActivityList } from '../../apiCalls/apiCalls';
+import { postNewActivity } from '../../apiCalls/apiCalls';
 import Loading from '../../components/Loading/Loading';
 
 
@@ -9,7 +9,7 @@ export default function NewActivityForm({ navigation, route }) {
   const { userInfo } = route.params;
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
-  const [activityList, setActivityList] = useState();
+  const [newActivityId, setNewActivityId] = useState();
   const [date, setDate] = useState(new Date(Date.now()));
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState('date');
@@ -44,16 +44,6 @@ export default function NewActivityForm({ navigation, route }) {
     showMode('date');
   };
 
-  useEffect(() => {
-    if (!activityList) {
-      fetchActivityList()
-        .then(data => setActivityList(data))
-    }
-  })
-
-  if(!activityList) {
-    return <Loading />
-  } else {
     return (
       <View style={ styles.container }>
         <Text style={ styles.label }>Activity:</Text>
@@ -64,9 +54,25 @@ export default function NewActivityForm({ navigation, route }) {
             onValueChange={(itemValue) => setActivity(itemValue)}
           >
             <Picker.Item label='Select an activity...' value={0} />
-            { activityList.map(activity => (
-              <Picker.Item label={activity.name} value={activity.value} />
-            ))}
+            <Picker.Item label='Mountain Biking' value='Mountain Biking' />
+            <Picker.Item label='Hiking' value='Hiking' />
+            <Picker.Item label='Road Biking' value='Road Biking' />
+            <Picker.Item label='Baseball' value='Baseball' />
+            <Picker.Item label='Golf' value='Golf' />
+            <Picker.Item label='Cricket' value='Cricket' />
+            <Picker.Item label='Diving' value='Diving' />
+            <Picker.Item label='Soccer' value='Soccer' />
+            <Picker.Item label='Football' value='Football' />
+            <Picker.Item label='Frisbee' value='Frisbee' />
+            <Picker.Item label='Horseback Riding' value='Horseback Riding' />
+            <Picker.Item label='Kayaking' value='Kayaking' />
+            <Picker.Item label='Stand-up Paddle Boarding' value='Stand-up Paddle Boarding' />
+            <Picker.Item label='Rafting' value='Rafting' />
+            <Picker.Item label='Snowboarding' value='Snowboarding' />
+            <Picker.Item label='Skiing' value='Skiing' />
+            <Picker.Item label='Paragliding' value='Paragliding' />
+            <Picker.Item label='Rock Climbing' value='Rock Climbing' />
+            <Picker.Item label='Running' value='Running' />
           </Picker>
         </View>
         <Text style={ styles.label }>Location:</Text>
@@ -97,14 +103,13 @@ export default function NewActivityForm({ navigation, route }) {
               let formatDate = getCurrentDate(date)
               let newActivity = ({id: userInfo.id, activity, location: location, date: formatDate})
               Promise.all([postNewActivity(newActivity)
-                .then(resp => navigation.navigate('ActivityDetails', resp.id))])
+                .then(resp => navigation.navigate('ActivityDetails', {activityId: resp.id, userId: userInfo.id}))])
             }}
-          />
+          /> 
         </View>
       </View>
     )
   }
-}
 
 const styles = StyleSheet.create({
   container: {
