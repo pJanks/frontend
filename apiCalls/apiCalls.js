@@ -9,12 +9,13 @@ export const fetchAllUserActivities = async (userId) => {
       return response.json()})
 }
 
-export const postNewActivity = async ({userId, activity, location, date}) => {
-  const url = `/api/v1/users/${userId}/scheduled_activities/new`;
+export const postNewActivity = async ({id, activity, location, date}) => {
+  console.log({id, activity, location, date})
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${id}/scheduled_activities`;
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      activity: activity,
+      activity_id: activity,
       location: location,
       date: date
     }),
@@ -41,3 +42,18 @@ export const fetchScheduledActivity = async (activityId, userId) => {
       }
       return response.json()})
 }
+<<<<<<< HEAD
+=======
+
+export const fetchActivityList = async () => {
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/activities`;
+  return await fetch(url)
+    .then(response => {
+      if(!response.ok) {
+        console.log(response)
+        throw Error('Failed to retrieve user activities.')
+      }
+      return response.json()})
+}
+
+>>>>>>> Add activity list fetch for form dropdown
