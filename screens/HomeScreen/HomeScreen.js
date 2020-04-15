@@ -8,6 +8,11 @@ import Loading from '../../components/Loading/Loading';
 export default function HomeScreen({ navigation }) {
   const [activities, setActivities] = useState([]);
   const [userInfo, setUserInfo] = useState()
+  const [viewPreviousActivities, setViewPreviousActivities] = useState(false)
+  let currentActivities = activities.filter(activity => new Date(activity.date) >= Date.now())
+  let previousActivities = activities.filter(activity => new Date(activity.date) <= Date.now())
+  currentActivities.sort((a, b) => new Date(a.date) - new Date(b.date))
+  previousActivities.sort((a, b) => new Date(a.date) - new Date(b.date))
 
   const updateUserActivities = () => {
     setActivities([])
@@ -32,7 +37,20 @@ export default function HomeScreen({ navigation }) {
             title='Create New Activity'
             onPress={() => navigation.navigate('NewActivity', {userInfo, updateUserActivities})} />
         </View>
-        <UserLandingPage activities={ activities } userInfo={userInfo} navigation={navigation} updateUserActivities={updateUserActivities} />
+        <View style={ styles.createActivityButton }>
+          <Button
+            buttonStyle={ styles.createActivityButton }
+            title='View Previous Activities'
+            onPress={() => setViewPreviousActivities(true)} />
+        </View>
+        <UserLandingPage 
+          activities={ activities }
+          currentActivities={ currentActivities } 
+          previousActivities={ previousActivities }
+          viewPreviousActivities={ viewPreviousActivities } 
+          userInfo={userInfo} 
+          navigation={navigation} 
+          updateUserActivities={updateUserActivities} />
       </View>
     )
   } else {

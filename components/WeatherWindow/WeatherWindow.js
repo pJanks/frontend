@@ -16,7 +16,6 @@ export default function WeatherWindow({ activity }) {
   }
 
   const icon = iconDictionary[activity.forecast_img];
-  console.log(icon)
 
   return (
     <View style={ styles.mainContainer }>
