@@ -68,9 +68,15 @@ describe('fetchAllUserActivities', () => {
   })
 
 describe('postNewActivity', () => {
+<<<<<<< HEAD
   let mockInputs = {
     userId: 1,
     activity: 1,
+=======
+  let mockInputs = { 
+    id: 1,
+    activity: 1, 
+>>>>>>> Fix endpoints
     location: 'Denver, CO',
     date: '2020-04-19' }
   let mockOptions;
@@ -79,7 +85,11 @@ describe('postNewActivity', () => {
     mockOptions = {
       method: 'POST',
       body: JSON.stringify({
+<<<<<<< HEAD
         activity: mockInputs.activity,
+=======
+        activity_id: mockInputs.activity, 
+>>>>>>> Fix endpoints
         location: mockInputs.location,
         date: mockInputs.date}),
       headers: {
@@ -91,7 +101,11 @@ describe('postNewActivity', () => {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({
+<<<<<<< HEAD
           activity: mockInputs.activity,
+=======
+          activity_id: mockInputs.activity, 
+>>>>>>> Fix endpoints
           location: mockInputs.location,
           date: mockInputs.date})
       })
@@ -100,7 +114,7 @@ describe('postNewActivity', () => {
 
   test('should call fetch with the correct URL', () => {
     postNewActivity(mockInputs);
-    expect(window.fetch).toHaveBeenCalledWith(`/api/v1/users/1/scheduled_activities/new`, mockOptions)
+    expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/users/1/scheduled_activities/new`, mockOptions)
   })
 
   test('should return an object with user activity data', () => {

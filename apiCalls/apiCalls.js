@@ -11,11 +11,11 @@ export const fetchAllUserActivities = async (userId) => {
 
 export const postNewActivity = async ({id, activity, location, date}) => {
   console.log({id, activity, location, date})
-  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${id}/scheduled_activities`;
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${id}/scheduled_activities/new`;
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      activity_id: activity,
+      activity_name: activity,
       location: location,
       date: date
     }),
@@ -32,7 +32,11 @@ export const postNewActivity = async ({id, activity, location, date}) => {
         })
 }
 
+<<<<<<< HEAD
 export const fetchScheduledActivity = async (activityId, userId) => {
+=======
+export const fetchScheduledActivity = async (userId, activityId) => {
+>>>>>>> Fix endpoints
   const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities/${activityId}`;
   return await fetch(url)
     .then(response => {
