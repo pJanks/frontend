@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchAllUserActivities, postNewActivity, fetchScheduledActivity } from './apiCalls';
+import { fetchAllUserActivities, postNewActivity, fetchScheduledActivity, deleteActivity } from './apiCalls';
 import renderer from 'react-test-renderer';
 
 
@@ -68,9 +68,9 @@ describe('fetchAllUserActivities', () => {
   })
 
 describe('postNewActivity', () => {
-  let mockInputs = { 
+  let mockInputs = {
     id: 1,
-    activity: 1, 
+    activity: 1,
     location: 'Denver, CO',
     date: '2020-04-19' }
   let mockOptions;
@@ -79,7 +79,7 @@ describe('postNewActivity', () => {
     mockOptions = {
       method: 'POST',
       body: JSON.stringify({
-        activity_name: mockInputs.activity, 
+        activity_name: mockInputs.activity,
         location: mockInputs.location,
         date: mockInputs.date}),
       headers: {
@@ -91,7 +91,7 @@ describe('postNewActivity', () => {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({
-          activity_id: mockInputs.activity, 
+          activity_id: mockInputs.activity,
           location: mockInputs.location,
           date: mockInputs.date})
       })
@@ -343,5 +343,53 @@ describe('fetchScheduledActivity', () => {
       })
 
       expect(fetchScheduledActivity(1, 1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
+    })
+  })
+
+  describe('deleteActivity', () => {
+    let mockOptions, mockActivityId, mockUserId;
+    beforeEach(() => {
+      mockUserId = 1
+      mockActivityId = 1
+      mockOptions = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+        })
+      })
+    })
+
+    test('should call fetch with the correct URL', () => {
+      deleteActivity(mockActivityId, mockUserId);
+      expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/users/1/scheduled_activities/1`, mockOptions)
+    })
+
+    test('should return an object with user activity data', () => {
+      deleteActivity(mockActivityId, mockUserId)
+        .then(data => expect(data).toEqual(mockResponse))
+    })
+
+    test('should return an error', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false,
+        })
+      });
+
+      expect(deleteActivity(mockActivityId, mockUserId)).rejects.toEqual(Error('Failed post new activity.'))
+    });
+
+    test('should return an error if the Promise rejects', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.reject(Error('Failed post new activity.'))
+      })
+
+      expect(deleteActivity(mockActivityId, mockUserId)).rejects.toEqual(Error('Failed post new activity.'))
     })
   })
