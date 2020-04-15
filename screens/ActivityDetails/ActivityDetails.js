@@ -23,7 +23,7 @@ export default function ActivityDetails({ route, navigation }) {
 
   if(!activity) {
     return null
-  } else if (weatherCondition === 'bad') {
+  } else if (weatherCondition === 'good') {
     return (
       <ScrollView
       contentContainerStyle={ styles.flex }
@@ -36,7 +36,7 @@ export default function ActivityDetails({ route, navigation }) {
           <Text style={ styles.subText }>at/in: { activity.location }</Text>
           <Button
             title='In Case You Want To Stay In'
-            onPress={() => setWeatherCondition('good')}
+            onPress={() => setWeatherCondition('bad')}
           >
           </Button>
         </View>
@@ -76,7 +76,7 @@ export default function ActivityDetails({ route, navigation }) {
             { secondaryMuscleExercises }
             <Button
               title='         Hide          '
-              onPress={() => setWeatherCondition('bad')}
+              onPress={() => setWeatherCondition('good')}
             >
             </Button>
           </View>
