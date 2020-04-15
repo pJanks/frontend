@@ -8,7 +8,6 @@ export default function UserWelcome(userInfo) {
   let yyyy = today.getFullYear();
 
   today = yyyy + '/' + mm + '/' + dd;
-  console.log(userInfo)
   return (
     <View style={ styles.container }>
       <Text style={ styles.welcome }>Welcome, {`${userInfo.userInfo.firstName} ${userInfo.userInfo.lastName}`}!</Text>
@@ -31,4 +30,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   }
 })
-
