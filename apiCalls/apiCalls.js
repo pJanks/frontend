@@ -37,20 +37,24 @@ export const fetchScheduledActivity = async (userId, activityId) => {
   return await fetch(url)
     .then(response => {
       if(!response.ok) {
-        console.log(response)
         throw Error('Failed to retrieve user activities.')
       }
       return response.json()})
 }
 
-export const fetchActivityList = async () => {
-  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/activities`;
-  return await fetch(url)
+export const deleteActivity = async (activityId, userId) => {
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities/${activityId}`;
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return await fetch(url, options)
     .then(response => {
+      console.log('apiCalls: ', response);
       if(!response.ok) {
-        console.log(response)
-        throw Error('Failed to retrieve user activities.')
+        throw Error('Failed to delete')
       }
       return response.json()})
 }
-
