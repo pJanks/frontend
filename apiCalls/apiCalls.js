@@ -31,8 +31,8 @@ export const postNewActivity = async ({userId, activity, location, date}) => {
         })
 }
 
-export const fetchScheduledActivity = async (userId, activityId) => {
-  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/${userId}/scheduled_activities/${activityId}`;
+export const fetchScheduledActivity = async (activityId, userId) => {
+  const url = `https://rain-or-shine-backend.herokuapp.com/api/v1/users/${userId}/scheduled_activities/${activityId}`;
   return await fetch(url)
     .then(response => {
       if(!response.ok) {

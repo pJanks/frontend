@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
             title='Create New Activity'
             onPress={() => navigation.navigate('NewActivity', {userInfo})} />
         </View>
-        <UserLandingPage activities={ activities } userInfo={userInfo} />
+        <UserLandingPage activities={ activities } userInfo={userInfo} navigation={navigation} />
       </View>
     )
   } else {

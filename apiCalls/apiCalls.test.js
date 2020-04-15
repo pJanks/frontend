@@ -42,35 +42,35 @@ describe('fetchAllUserActivities', () => {
       fetchAllUserActivities(1);
       expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/users/1/scheduled_activities`)
     })
-    
+
     test('should return an object with user activity data', () => {
       fetchAllUserActivities(1)
         .then(data => expect(data).toEqual(mockResponse))
     })
-  
+
     test('should return an error', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false,
         })
       });
-  
+
       expect(fetchAllUserActivities(1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     });
-  
+
     test('should return an error if the Promise rejects', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(Error('Failed to retrieve user activities.'))
       })
-  
+
       expect(fetchAllUserActivities(1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     })
   })
 
 describe('postNewActivity', () => {
-  let mockInputs = { 
+  let mockInputs = {
     userId: 1,
-    activity: 1, 
+    activity: 1,
     location: 'Denver, CO',
     date: '2020-04-19' }
   let mockOptions;
@@ -79,7 +79,7 @@ describe('postNewActivity', () => {
     mockOptions = {
       method: 'POST',
       body: JSON.stringify({
-        activity: mockInputs.activity, 
+        activity: mockInputs.activity,
         location: mockInputs.location,
         date: mockInputs.date}),
       headers: {
@@ -91,7 +91,7 @@ describe('postNewActivity', () => {
       return Promise.resolve({
         ok: true,
         json: () => Promise.resolve({
-          activity: mockInputs.activity, 
+          activity: mockInputs.activity,
           location: mockInputs.location,
           date: mockInputs.date})
       })
@@ -102,7 +102,7 @@ describe('postNewActivity', () => {
     postNewActivity(mockInputs);
     expect(window.fetch).toHaveBeenCalledWith(`/api/v1/users/1/scheduled_activities/new`, mockOptions)
   })
-  
+
   test('should return an object with user activity data', () => {
     postNewActivity(mockInputs)
       .then(data => expect(data).toEqual(mockResponse))
@@ -319,29 +319,29 @@ describe('fetchScheduledActivity', () => {
 
     test('should call fetch with the correct URL', () => {
       fetchScheduledActivity(1, 1);
-      expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/1/scheduled_activities/1`)
+      expect(window.fetch).toHaveBeenCalledWith(`https://rain-or-shine-backend.herokuapp.com/api/v1/users/1/scheduled_activities/1`)
     })
-    
+
     test('should return an object with user activity data', () => {
       fetchScheduledActivity(1, 1)
         .then(data => expect(data).toEqual(mockResponse))
     })
-  
+
     test('should return an error', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.resolve({
           ok: false,
         })
       });
-  
+
       expect(fetchScheduledActivity(1, 1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     });
-  
+
     test('should return an error if the Promise rejects', () => {
       window.fetch = jest.fn().mockImplementation(() => {
         return Promise.reject(Error('Failed to retrieve user activities.'))
       })
-  
+
       expect(fetchScheduledActivity(1, 1)).rejects.toEqual(Error('Failed to retrieve user activities.'))
     })
   })

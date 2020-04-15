@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function ActivityCard({ date, location, activity, forecast, activityId }) {
+export default function ActivityCard({ date, location, activity, forecast, activityId, userId, navigation }) {
   return (
     <View style={ styles.activityCard } key={ activityId }>
       <Text style={ styles.header }>{`${activity}`}</Text>

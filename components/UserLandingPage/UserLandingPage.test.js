@@ -4,6 +4,7 @@ import UserLandingPage from './UserLandingPage';
 import renderer from 'react-test-renderer';
 
 test('renders correctly', () => {
+  const userInfo = { id: 1 }
   const activities = [{
     "id": 1,
     "activity": "Baseball",
@@ -20,6 +21,6 @@ test('renders correctly', () => {
     "forecast": "Sunny",
     "forecast_img": "sunny"
     }]
-  const landingPage = renderer.create(<UserLandingPage activities={ activities } />).toJSON();
+  const landingPage = renderer.create(<UserLandingPage activities={ activities } userInfo={ userInfo } />).toJSON();
   expect(landingPage).toMatchSnapshot();
 });

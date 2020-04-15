@@ -3,10 +3,10 @@ import ActivityCard from "../ActivityCard/ActivityCard";
 import { View, StyleSheet, ScrollView } from "react-native";
 
 
-export default function UserLandingPage({ activities, userInfo }) {
+export default function UserLandingPage({ activities, userInfo, navigation }) {
   return (
-        <ScrollView 
-          style={ styles.ScrollViewStyle } 
+        <ScrollView
+          style={ styles.ScrollViewStyle }
           contentContainerStyle={ styles.grow }>
           {activities.map(activity => {
             return (
@@ -16,6 +16,8 @@ export default function UserLandingPage({ activities, userInfo }) {
             activity={ activity.activity }
             forecast={ activity.forecast }
             activityId={ activity.id }
+            userId={ userInfo.id }
+            navigation={navigation}
             key={ activity.id }
             />
           )})}
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#b2e1f4',
   },
   grow: {
-    flexGrow: 1, 
+    flexGrow: 1,
     alignItems: 'center'
   }
 });
