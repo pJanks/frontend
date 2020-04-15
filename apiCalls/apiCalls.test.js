@@ -79,7 +79,7 @@ describe('postNewActivity', () => {
     mockOptions = {
       method: 'POST',
       body: JSON.stringify({
-        activity_id: mockInputs.activity, 
+        activity_name: mockInputs.activity, 
         location: mockInputs.location,
         date: mockInputs.date}),
       headers: {
