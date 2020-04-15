@@ -9,6 +9,10 @@ export default function HomeScreen({ navigation }) {
   const [activities, setActivities] = useState([]);
   const [userInfo, setUserInfo] = useState()
 
+  const updateUserActivities = () => {
+    setActivities([])
+  }
+
   useEffect(() => {
     if (!activities.length) {
       fetchAllUserActivities(1)
@@ -28,7 +32,7 @@ export default function HomeScreen({ navigation }) {
             title='Create New Activity'
             onPress={() => navigation.navigate('NewActivity', {userInfo})} />
         </View>
-        <UserLandingPage activities={ activities } userInfo={userInfo} navigation={navigation} />
+        <UserLandingPage activities={ activities } userInfo={userInfo} navigation={navigation} updateUserActivities={updateUserActivities} />
       </View>
     )
   } else {
