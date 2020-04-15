@@ -7,7 +7,6 @@ import { fetchAllUserActivities } from '../../apiCalls/apiCalls';
 
 
 export default function UserLandingPage({ activities, userInfo, updateUserActivities, navigation }) {
-  console.log(activities);
   if (!activities.length) {
     return <Loading />
   } else {

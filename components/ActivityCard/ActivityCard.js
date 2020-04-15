@@ -35,7 +35,6 @@ export default function ActivityCard({ date, location, activity, forecast, activ
             Promise.all([deleteActivity(activityId, userId)
               ])
               .then(response => {
-                console.log(response);
                 setDeletedActivity(activityId)
               })
               updateUserActivities()
