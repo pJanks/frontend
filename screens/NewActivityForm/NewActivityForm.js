@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, TextInput, View, Button, Picker, StyleSheet } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { postNewActivity, fetchActivityList } from '../../apiCalls/apiCalls';
+import Loading from '../../components/Loading/Loading';
 
 
-export default function NewActivityForm({ navigation }) {
+export default function NewActivityForm({ navigation, route }) {
+  const { userInfo } = route.params;
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
+  const [activityList, setActivityList] = useState();
   const [date, setDate] = useState(new Date(1586051730000));
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState('date');
-
   const getCurrentDate = (date) => {
     let year = date.getFullYear();
     let month, day;
@@ -23,7 +26,6 @@ export default function NewActivityForm({ navigation }) {
     } else {
       day = date.getDate();
     }
-    this.date = year + "-" + month + "-" + day;
     return year + "-" + month + "-" + day;
   }
 
@@ -42,57 +44,68 @@ export default function NewActivityForm({ navigation }) {
     showMode('date');
   };
 
-  return (
-    <View style={ styles.container }>
-      <Text style={ styles.label }>Activity:</Text>
-      <View>
-        <Picker
-          selectedValue={activity}
-          style={ styles.picker }
-          onValueChange={(itemValue) => setActivity(itemValue)}
-        >
-          <Picker.Item label='Select an activity...' value={0} />
-          <Picker.Item label='Hiking' value={1} />
-          <Picker.Item label='Climbing' value={2} />
-          <Picker.Item label='Biking' value={3} />
-          <Picker.Item label='Running' value={4} />
-          <Picker.Item label='Kayaking' value={5} />
-          <Picker.Item label='Skiing' value={6} />
-          <Picker.Item label='Snowboarding' value={7} />
-        </Picker>
-      </View>
-      <Text style={ styles.label }>Location:</Text>
-      <TextInput       
-        style={ styles.location }
-        value={ location }
-        onChangeText={(value) => setLocation(value)}
-      />
-      <Text style={ styles.label }>Date:</Text>
-      <View>
-        <Button color='green' onPress={showDatepicker} title="Select a Date" />
-      </View>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          timeZoneOffsetInMinutes={0}
-          value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
-          onChange={onDateChange}
+  useEffect(() => {
+    if (!activityList) {
+      fetchActivityList()
+        .then(data => setActivityList(data))
+    }
+  })
+
+  if(!activityList) {
+    return <Loading />
+  } else {
+    return (
+      <View style={ styles.container }>
+        <Text style={ styles.label }>Activity:</Text>
+        <View>
+          <Picker
+            selectedValue={activity}
+            style={ styles.picker }
+            onValueChange={(itemValue) => setActivity(itemValue)}
+          >
+            <Picker.Item label='Select an activity...' value={0} key={0} />
+            { activityList.map(activity => (
+              <Picker.Item label={activity.name} value={activity.value} key={activity.value} />
+            ))}
+          </Picker>
+        </View>
+        <Text style={ styles.label }>Location:</Text>
+        <TextInput       
+          style={ styles.location }
+          value={ location }
+          onChangeText={(value) => setLocation(value)}
         />
-      )}
-      <View style={ styles.createActivity }>
-        <Button
-          title="Create Activity"
-          onPress={() => {
-            let formatDate = getCurrentDate(date)
-            //Date not currently passing. Will be sent to an API call instead and this is just testing
-            navigation.navigate('UserActivityScreen', {activity, location, formatDate})}}
-        />
+        <Text style={ styles.label }>Date:</Text>
+        <View>
+          <Button color='green' onPress={showDatepicker} title="Select a Date" />
+        </View>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={date}
+            mode={mode}
+            is24Hour={true}
+            display="default"
+            onChange={onDateChange}
+          />
+        )}
+        <View style={ styles.createActivity }>
+          <Button
+            title="Create Activity"
+            onPress={() => {
+              let formatDate = getCurrentDate(date)
+              let newActivity = ({id: userInfo.id, activity, location: location, date: formatDate})
+              postNewActivity(newActivity)
+                .then(resp => navigation.navigate('ActivityDetails', resp))
+              //Date not currently passing. Will be sent to an API call instead and this is just testing
+              // navigation.navigate('UserActivityScreen', {activity, location, formatDate})
+            }}
+          />
+        </View>
       </View>
-    </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
