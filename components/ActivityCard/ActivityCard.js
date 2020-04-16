@@ -21,33 +21,38 @@ export default function ActivityCard({ date, location, activity, forecast, activ
         <Text style={ styles.content }>{ `${forecast}` }</Text>
       </View>
       <View style={ styles.buttonContainer}>
-        <Button
-          buttonStyle={ styles.buttonStyle }
-          title='View Activity'
-          onPress={() => {
-            navigation.navigate('ActivityDetails', { activityId, userId })
-          }}
-          color= '#07407b' />
-        <Button
-          buttonStyle={ styles.buttonStyle }
-          title='Delete Activity'
-          onPress={() => {
-            Promise.all([deleteActivity(activityId, userId)
-              ])
-              .then(response => {
-                setDeletedActivity(activityId)
-              })
-              updateUserActivities()
+        <View style = { styles.buttonViewStyle }>
+          <Button
+            buttonStyle={ styles.buttonStyle }
+            title='View Activity'
+            onPress={() => {
+              navigation.navigate('ActivityDetails', { activityId, userId })
+            }}
+            color= '#1d97c3' />
+        </View>
+        <View style = { styles.buttonViewStyle }>
+          <Button
+            buttonStyle={ styles.buttonStyle }
+            title='Delete Activity'
+            onPress={() => {
+              Promise.all([deleteActivity(activityId, userId)
+                ])
+                .then(response => {
+                  console.log(response);
+                  setDeletedActivity(activityId)
+                })
+                updateUserActivities()
+              }
             }
-          }
-          color= '#07407b' />
+            color= '#07407b' />
+          </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonStyle: {
+  buttonViewStyle: {
     margin: 5,
   },
 
