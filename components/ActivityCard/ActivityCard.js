@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
   buttonViewStyle: {
     margin: 5,
   },
-
   activityCard: {
     backgroundColor: '#fff',
     borderWidth: 2,
@@ -68,6 +67,7 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'row',
     margin: 2,
+    width: 220
   },
   header: {
     fontSize: 25,
