@@ -9,7 +9,6 @@ export default function NewActivityForm({ navigation, route }) {
   const { userInfo, updateUserActivities } = route.params;
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
-  const [newActivityId, setNewActivityId] = useState();
   const [date, setDate] = useState(new Date(Date.now()));
   const [show, setShow] = useState(false);
   const [mode, setMode] = useState('date');
@@ -80,10 +79,14 @@ export default function NewActivityForm({ navigation, route }) {
           style={ styles.location }
           value={ location }
           onChangeText={(value) => setLocation(value)}
+          placeholder='City, State or Landmark'
         />
         <Text style={ styles.label }>Date:</Text>
-        <View>
-          <Button color='green' onPress={showDatepicker} title="Select a Date" />
+        <View style={ styles.createActivity }>
+          <Button 
+            color='#ed950e' 
+            onPress={showDatepicker} 
+            title="Select a Date" />
         </View>
         {show && (
           <DateTimePicker
@@ -105,7 +108,7 @@ export default function NewActivityForm({ navigation, route }) {
               Promise.all([postNewActivity(newActivity)
                 .then(resp => {
                   updateUserActivities()
-                  navigation.navigate('Home')
+                  navigation.navigate('ActivityDetails', {activityId: resp.id, userId: userInfo.id})
                 })
                 ])
             }}
@@ -117,6 +120,7 @@ export default function NewActivityForm({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#b2e1f4',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -124,14 +128,16 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: 'bold',
+    paddingTop: 15
   },
   location: {
     backgroundColor: '#fff',
     height: 40,
+    paddingLeft: 10,
     width: 250,
   },
   createActivity: {
-    margin: 20,
+    marginBottom: 30,
     width: 250,
   },
   picker: {
