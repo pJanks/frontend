@@ -9,10 +9,11 @@ export default function HomeScreen({ navigation }) {
   const [activities, setActivities] = useState([]);
   const [userInfo, setUserInfo] = useState()
   const [viewPreviousActivities, setViewPreviousActivities] = useState(false)
-  let currentActivities = activities.filter(activity => new Date(activity.date) >= Date.now())
-  let previousActivities = activities.filter(activity => new Date(activity.date) <= Date.now())
+  let today = new Date()
+  let currentActivities = activities.filter(activity => new Date(activity.date) >= new Date().setDate(today.getDate() - 1))
+  let previousActivities = activities.filter(activity => new Date(activity.date) < new Date().setDate(today.getDate() - 1))
   currentActivities.sort((a, b) => new Date(a.date) - new Date(b.date))
-  previousActivities.sort((a, b) => new Date(a.date) - new Date(b.date))
+  previousActivities.sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const updateUserActivities = () => {
     setActivities([])
@@ -41,6 +42,7 @@ export default function HomeScreen({ navigation }) {
         </View>
         <View style={ styles.createActivityButton }>
           <Button
+            color='#ed950e'
             buttonStyle={ styles.createActivityButton }
             title='View Previous Activities'
             onPress={() => setViewPreviousActivities(true)} />
@@ -67,6 +69,7 @@ export default function HomeScreen({ navigation }) {
         </View>
         <View style={ styles.createActivityButton }>
           <Button
+            color='#07407b' 
             buttonStyle={ styles.createActivityButton }
             title='View Current Activities'
             onPress={() => setViewPreviousActivities(false)} />
