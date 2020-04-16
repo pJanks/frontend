@@ -108,7 +108,7 @@ export default function NewActivityForm({ navigation, route }) {
               Promise.all([postNewActivity(newActivity)
                 .then(resp => {
                   updateUserActivities()
-                  navigation.navigate('ActivityDetails', {activityId: resp.id, userId: userInfo.id})
+                  navigation.navigate('Home')
                 })
                 ])
             }}
