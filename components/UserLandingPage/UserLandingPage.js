@@ -55,7 +55,7 @@ export default function UserLandingPage({ activities, currentActivities, previou
 
 const styles = StyleSheet.create({
   ScrollViewStyle: {
-    height: '78.75%',
+    height: '68%',
     backgroundColor: '#b2e1f4',
   },
   grow: {
