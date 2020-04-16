@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Text, Button } from "react-native";
-import ActivityContext from '../../context/ActivityContext';
 import WeatherWindow from '../../components/WeatherWindow/WeatherWindow'
 import { fetchScheduledActivity } from '../../apiCalls/apiCalls';
 
@@ -8,9 +7,7 @@ export default function ActivityDetails({ route, navigation }) {
   const [weatherCondition, setWeatherCondition] = useState('')
   const [activity, setActivity] = useState('')
 
-
   const { activityId, userId } = route.params
-  console.log(userId, activityId)
 
   useEffect(() => {
     if (!activity) {
@@ -51,6 +48,7 @@ export default function ActivityDetails({ route, navigation }) {
             <Text style={ styles.labels }>Necessary Equipment: </Text><Text style={styles.descriptions}>{ `${primaryMuscleGroup.primary_exercises[0].equipment}\n` }</Text>
             <Text style={ styles.labels }>Exercise Description: </Text><Text style={styles.descriptions}>{ `${primaryMuscleGroup.primary_exercises[0].description}\n` }</Text>
             <Text style={ styles.labels }>Instructions: </Text><Text style={styles.descriptions}>{ `${primaryMuscleGroup.primary_exercises[0].instructions}\n` }</Text>
+            <View style={ styles.break }></View>
           </View>
         )
       })
@@ -63,6 +61,7 @@ export default function ActivityDetails({ route, navigation }) {
             <Text style={ styles.labels }>Necessary Equipment: </Text><Text style={styles.descriptions}>{`${secondaryMuscleGroup.secondary_exercises[0].equipment}\n` }</Text>
             <Text style={ styles.labels }>Exercise Description: </Text><Text style={styles.descriptions}>{ `${secondaryMuscleGroup.secondary_exercises[0].description}\n` }</Text>
             <Text style={ styles.labels }>Instructions: </Text><Text style={styles.descriptions}>{ `${secondaryMuscleGroup.secondary_exercises[0].instructions}\n` }</Text>
+            <View style={ styles.break }></View>
           </View>
         )
       })
@@ -88,12 +87,12 @@ export default function ActivityDetails({ route, navigation }) {
 
 const styles = StyleSheet.create({
   header: {
+    backgroundColor: '#fff',
     borderWidth: 3,
     borderRadius: 29,
     fontSize: 17,
     marginBottom: 20,
-    paddingTop: 10,
-    paddingBottom: 10,
+    padding: 10,
     textAlign: 'center',
     fontWeight: '700'
   },
@@ -146,5 +145,14 @@ const styles = StyleSheet.create({
 
   flex: {
     flexGrow: 1,
+  },
+
+  break: {
+    borderStyle: 'solid',
+    borderWidth: 4,
+    borderColor: '#fff',
+    width: 275,
+    alignSelf: 'center',
+    marginBottom: 15
   }
 });

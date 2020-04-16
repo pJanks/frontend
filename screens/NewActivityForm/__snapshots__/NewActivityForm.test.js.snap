@@ -5,6 +5,7 @@ exports[`NewActivityForm should load with props 1`] = `
   style={
     Object {
       "alignItems": "center",
+      "backgroundColor": "#b2e1f4",
       "flex": 1,
       "justifyContent": "center",
     }
@@ -15,6 +16,7 @@ exports[`NewActivityForm should load with props 1`] = `
       Object {
         "fontSize": 18,
         "fontWeight": "bold",
+        "paddingTop": 15,
       }
     }
   >
@@ -157,6 +159,7 @@ exports[`NewActivityForm should load with props 1`] = `
       Object {
         "fontSize": 18,
         "fontWeight": "bold",
+        "paddingTop": 15,
       }
     }
   >
@@ -165,11 +168,13 @@ exports[`NewActivityForm should load with props 1`] = `
   <TextInput
     allowFontScaling={true}
     onChangeText={[Function]}
+    placeholder="City, State or Landmark"
     rejectResponderTermination={true}
     style={
       Object {
         "backgroundColor": "#fff",
         "height": 40,
+        "paddingLeft": 10,
         "width": 250,
       }
     }
@@ -181,12 +186,20 @@ exports[`NewActivityForm should load with props 1`] = `
       Object {
         "fontSize": 18,
         "fontWeight": "bold",
+        "paddingTop": 15,
       }
     }
   >
     Date:
   </Text>
-  <View>
+  <View
+    style={
+      Object {
+        "marginBottom": 30,
+        "width": 250,
+      }
+    }
+  >
     <View
       accessibilityRole="button"
       accessibilityStates={Array []}
@@ -223,7 +236,7 @@ exports[`NewActivityForm should load with props 1`] = `
                 "textAlign": "center",
               },
               Object {
-                "color": "green",
+                "color": "#ed950e",
               },
             ]
           }
@@ -236,7 +249,7 @@ exports[`NewActivityForm should load with props 1`] = `
   <View
     style={
       Object {
-        "margin": 20,
+        "marginBottom": 30,
         "width": 250,
       }
     }
