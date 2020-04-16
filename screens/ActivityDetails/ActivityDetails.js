@@ -46,7 +46,6 @@ export default function ActivityDetails({ route, navigation }) {
       let primaryMuscleExercises = activity.activity.primary_muscles.map(primaryMuscleGroup => {
         return (
           <View>
-            <Text style={ styles.header }>Here are some exercises you can do from home to work out muscle groups associated with { activity.activity.name }:</Text>
             <Text style={ styles.labels }>Primary Muscle Group: {`${primaryMuscleGroup.name}\n`}</Text>
             <Text style={ styles.exerciseName }>{ `${primaryMuscleGroup.primary_exercises[0].name.split('-').join(' ').toUpperCase()}\n` }</Text>
             <Text style={ styles.labels }>Necessary Equipment: </Text><Text style={styles.descriptions}>{ `${primaryMuscleGroup.primary_exercises[0].equipment}\n` }</Text>
@@ -73,6 +72,7 @@ export default function ActivityDetails({ route, navigation }) {
         style={styles.ScrollViewStyle}>
         <WeatherWindow activity={ activity } />
           <View style={ styles.container }>
+          <Text style={ styles.header }>Here are some exercises you can do from home to work out muscle groups associated with { activity.activity.name }:</Text>
             { primaryMuscleExercises }
             { secondaryMuscleExercises }
             <Button
@@ -89,6 +89,7 @@ export default function ActivityDetails({ route, navigation }) {
 const styles = StyleSheet.create({
   header: {
     borderWidth: 3,
+    borderRadius: 29,
     fontSize: 17,
     marginBottom: 20,
     paddingTop: 10,
