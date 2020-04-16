@@ -6,7 +6,7 @@ import Loading from '../../components/Loading/Loading';
 
 
 export default function NewActivityForm({ navigation, route }) {
-  const { userInfo } = route.params;
+  const { userInfo, updateUserActivities } = route.params;
   const [activity, setActivity] = useState('');
   const [location, setLocation] = useState('');
   const [newActivityId, setNewActivityId] = useState();
@@ -76,7 +76,7 @@ export default function NewActivityForm({ navigation, route }) {
           </Picker>
         </View>
         <Text style={ styles.label }>Location:</Text>
-        <TextInput       
+        <TextInput
           style={ styles.location }
           value={ location }
           onChangeText={(value) => setLocation(value)}
@@ -103,9 +103,13 @@ export default function NewActivityForm({ navigation, route }) {
               let formatDate = getCurrentDate(date)
               let newActivity = ({id: userInfo.id, activity, location: location, date: formatDate})
               Promise.all([postNewActivity(newActivity)
-                .then(resp => navigation.navigate('ActivityDetails', {activityId: resp.id, userId: userInfo.id}))])
+                .then(resp => {
+                  updateUserActivities()
+                  navigation.navigate('Home')
+                })
+                ])
             }}
-          /> 
+          />
         </View>
       </View>
     )

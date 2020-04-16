@@ -5,12 +5,12 @@ export default function LoginScreen({ navigation }) {
   return (
     <View style={ styles.container }>
       <View style={ styles.logoContainer }>
-      <Image 
-          style={ styles.logoTitle }
-          source={require('../../assets/RainorShineTitle.png')}/>
-      <Image 
-        style={ styles.logo }
-        source={require('../../assets/RainorShineLogo.png')}/>
+        <Image 
+            style={ styles.logoTitle }
+            source={require('../../assets/RainorShineTitle.png')}/>
+        <Image 
+          style={ styles.logo }
+          source={require('../../assets/RainorShineLogo.png')}/>
       </View>
       <View style={ styles.login }>
         <Text style={ styles.label }>Username:</Text>

@@ -1,27 +1,32 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Skycons from 'react-skycons';
+import { Text, View, StyleSheet, Image } from 'react-native';
 
 export default function WeatherWindow({ activity }) {
-  const iconTranslation = {
-    'clear-day': 'CLEAR_DAY',
-    'clear-night': 'CLEAR_NIGHT',
-    'rain': 'RAIN',
-    'snow': 'SNOW',
-    'sleet': 'SLEET',
-    'wind': 'WIND',
-    'fog': 'FOG',
-    'cloudy': 'CLOUDY',
-    'partly-cloudy-day': 'PARTLY_CLOUDY_DAY',
-    'partly-cloudy-night': 'PARTLY_CLOUDY_NIGHT'
+  const iconDictionary = {
+    'clear-day': require('../../assets/clear-day.png'),
+    'clear-night': require('../../assets/clear-night.png'),
+    'cloudy': require('../../assets/cloudy.png'),
+    'fog': require('../../assets/fog.png'),
+    'partly-cloudy-day': require('../../assets/partly-cloudy-day.png'),
+    'partly-cloudy-night': require('../../assets/partly-cloudy-night.png'),
+    'rain': require('../../assets/rain.png'),
+    'sleet': require('../../assets/sleet.png'),
+    'snow': require('../../assets/snow.png'),
+    'wind': require('../../assets/wind.png')
   }
 
-  let icon = 'clear-day';
+  const icon = iconDictionary[activity.forecast_img];
+
   return (
     <View style={ styles.mainContainer }>
       <View style={ styles.tempContainer }>
         <Text style={ styles.highLow }>High: { activity.temp_hi }&deg;F Low: { activity.temp_low }&deg;F</Text>
         <Text style={ styles.mainTemp }>{ activity.temperature }&deg;F</Text>
+      </View>
+      <View>
+        <Image 
+          style={ styles.forecastImg }
+          source={icon} />
       </View>
     </View>
   )
@@ -42,5 +47,10 @@ const styles = StyleSheet.create({
   },
   highLow: {
     fontSize: 12,
+  },
+  forecastImg: {
+    padding: 15,
+    width: 100,
+    height: 100
   }
 })

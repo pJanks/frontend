@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ActivityCard from "../ActivityCard/ActivityCard";
 import Loading from "../Loading/Loading";
-import { View, StyleSheet, ScrollView } from "react-native";
-import { fetchAllUserActivities } from '../../apiCalls/apiCalls';
+import { StyleSheet, ScrollView } from "react-native";
+
+export default function UserLandingPage({ activities, currentActivities, previousActivities, viewPreviousActivities, userInfo, updateUserActivities, navigation }) {
 
 
-
-export default function UserLandingPage({ activities, userInfo, updateUserActivities, navigation }) {
-  console.log(activities);
   if (!activities.length) {
     return <Loading />
-  } else {
+  } else if (viewPreviousActivities === false) {
     return (
       <ScrollView
       style={ styles.ScrollViewStyle }
       contentContainerStyle={ styles.grow }>
-      {activities.map(activity => {
+      {currentActivities.map(activity => {
         return (
           <ActivityCard
           date={ activity.date }
@@ -29,8 +27,29 @@ export default function UserLandingPage({ activities, userInfo, updateUserActivi
           key={ activity.id }
           />
         )})}
-        </ScrollView>
-      )
+      </ScrollView>
+    )
+  } else {
+    return (
+      <ScrollView
+        style={ styles.ScrollViewStyle }
+        contentContainerStyle={ styles.grow }>
+        {previousActivities.map(activity => {
+          return (
+            <ActivityCard
+            date={ activity.date }
+            location={ activity.location }
+            activity={ activity.activity }
+            forecast={ activity.forecast }
+            activityId={ activity.id }
+            userId={ userInfo.id }
+            updateUserActivities={updateUserActivities}
+            navigation={navigation}
+            key={ activity.id }
+            />
+          )})}
+      </ScrollView>
+    )
   }
 }
 
