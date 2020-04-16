@@ -69,6 +69,7 @@ exports[`renders correctly 1`] = `
         Object {
           "backgroundColor": "#fff",
           "height": 40,
+          "paddingLeft": 10,
           "width": 250,
         }
       }
@@ -92,6 +93,7 @@ exports[`renders correctly 1`] = `
         Object {
           "backgroundColor": "#fff",
           "height": 40,
+          "paddingLeft": 10,
           "width": 250,
         }
       }
