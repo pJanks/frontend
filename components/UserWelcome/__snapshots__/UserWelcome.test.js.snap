@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
     }
   >
     Today's date is 
-    2020/04/15
+    2020/04/16
   </Text>
 </View>
 `;
