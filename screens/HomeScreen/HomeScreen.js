@@ -86,9 +86,6 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   createActivityButton: {
-    margin: 20,
-  },
-  // activityHeader: {
-  //   fontSize: 20
-  // }
+    margin: 15,
+  }
 })
