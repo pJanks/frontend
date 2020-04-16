@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor: '#fff',
     height: 40,
+    paddingLeft: 10,
     width: 250,
   },
   loginButton: {
