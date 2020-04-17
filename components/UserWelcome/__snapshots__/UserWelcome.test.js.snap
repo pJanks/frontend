@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    Welcome,
+    Welcome, 
     undefined undefined
     !
   </Text>
@@ -29,8 +29,8 @@ exports[`renders correctly 1`] = `
       }
     }
   >
-    Today's date is
-    2020/04/17
+    Today's date is 
+    2020/04/16
   </Text>
 </View>
 `;
