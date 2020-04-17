@@ -11,7 +11,7 @@ This project, our 'Cross Pollination', was the final project at Turing School of
 
 ### Screenshots
 ![screenshot 1]()
-![screenshot 2]()
+![screenshot 3]()
 ![screenshot 3]()
 ![screenshot 4]()
 ![screenshot 5]()
