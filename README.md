@@ -1,4 +1,4 @@
-![logo](assets/Screen Shot 2020-04-17 at 10.07.29 AM.png)
+![logo](https://ibb.co/7RjM3Gc)
 
 # RAIN OR SHINE [Frontend Repo]
 An Android app for scheduling outdoor activities at specified locations. If the weather doesn't seem like the best for outdoor fun, we will give you exercises that you can do from home which target the same muscle groups.
