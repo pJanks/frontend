@@ -10,12 +10,12 @@ We help make sure you get the workout you want, regardless of the weather. Sched
 This project, our 'Cross Pollination', was the final project at Turing School of Software and Design. Our team consisted of two backend and two frontend developers and over the span of two weeks we collaborated to create this mobile app. The backend README, which is linked at the bottom of this page, has a list of all endpoints they created using Python and Django, which were new technologies for both backend students. On the frontend we utilized React Native, which was also a new technology for us. Both sides implemented TravisCI for the first time as well.
 
 ### Screenshots
-![screenshot 1]()
-![screenshot 3]()
-![screenshot 3]()
-![screenshot 4]()
-![screenshot 5]()
-![screenshot 6]()
+![screenshot 1](https://i.ibb.co/yXBvF51/Screen-Shot-2020-04-17-at-10-13-17-AM.png)
+![screenshot 2](https://i.ibb.co/HzqFL3t/Screen-Shot-2020-04-17-at-10-12-59-AM.png)
+![screenshot 3](https://i.ibb.co/YNKZn9G/Screen-Shot-2020-04-17-at-10-12-48-AM.png)
+![screenshot 4](https://i.ibb.co/0KpssmH/Screen-Shot-2020-04-17-at-10-12-37-AM.png)
+![screenshot 5](https://i.ibb.co/Z1HwtMj/Screen-Shot-2020-04-17-at-10-12-29-AM.png)
+![screenshot 6](https://i.ibb.co/pW2SGsy/Screen-Shot-2020-04-17-at-10-12-14-AM.png)
 
 ### Directions for Use
 - Upon initial page load the user is greeted with a login screen asking for username and password. Currently, the app is a prototype and doesn't require a login, you can just press the `LOGIN` button.
