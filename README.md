@@ -1,7 +1,7 @@
+![logo](assets/RainorShineLogo.png | 250x250)
+
 # RAIN OR SHINE [Frontend Repo]
 An Android app for scheduling outdoor activities at specified locations. If the weather doesn't seem like the best for outdoor fun, we will give you exercises that you can do from home which target the same muscle groups.
-
-![logo](assets/RainorShineLogo.png)
 
 ### Intro
 We help make sure you get the workout you want, regardless of the weather. Schedule an outdoor activity with us, and we will keep track of the weather for you. If it doesn't look like the weather is on your side, we present you with a list of exercises that work similar muscle groups to the outdoor activity you scheduled.
